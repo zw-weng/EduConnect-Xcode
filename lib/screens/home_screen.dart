@@ -17,9 +17,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<Tutor> tutors = [
-    Tutor(name: "Jotaro", rating: 4.8, imageUrl: 'assets/images/tutor.jpg', course: 'Physics'),
-    Tutor(name: "Ali bin Abu", rating: 5.0, imageUrl: 'assets/images/tutor.jpg', course: 'Add Math'),
-    Tutor(name: "Suzana Li", rating: 4.8, imageUrl: 'assets/images/tutor.jpg', course: 'Coding'),
+    Tutor(name: "Jotaro", rating: 4.8, imageUrl: 'assets/images/tutor.jpg', course: 'Physics', subject: 'Science', description: 'Experienced Physics tutor'),
+    Tutor(name: "Ali bin Abu", rating: 5.0, imageUrl: 'assets/images/tutor.jpg', course: 'Add Math', subject: 'Mathematics', description: 'Expert in Additional Mathematics'),
+    Tutor(name: "Suzana Li", rating: 4.8, imageUrl: 'assets/images/tutor.jpg', course: 'Coding', subject: 'Computer Science', description: 'Professional Coding instructor'),
   ];
 
   final List<Course> courses = [
