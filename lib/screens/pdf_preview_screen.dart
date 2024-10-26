@@ -13,11 +13,11 @@ class PdfPreviewScreen extends StatelessWidget {
         title: const Text("PDF Preview"),
       ),
       body: PDFView(
-        filePath: pdfUrl, // Assuming the PDF is locally stored, for remote PDFs use an appropriate method to fetch it
+        filePath: pdfUrl,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Implement download logic here
+          // Implement download logic here if needed
         },
         child: const Icon(Icons.download),
       ),
