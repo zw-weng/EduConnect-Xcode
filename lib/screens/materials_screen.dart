@@ -5,8 +5,9 @@ import 'package:educonnect/screens/video_preview_screen.dart'; // Video preview 
 
 class MaterialsScreen extends StatefulWidget {
   final String subjectName;
+  final List<Resource> resources; // Add this line
 
-  const MaterialsScreen({super.key, required this.subjectName});
+  const MaterialsScreen({super.key, required this.subjectName, required this.resources}); // Update constructor
 
   @override
   State<MaterialsScreen> createState() => _MaterialsScreenState();
@@ -14,35 +15,6 @@ class MaterialsScreen extends StatefulWidget {
 
 class _MaterialsScreenState extends State<MaterialsScreen> {
   String selectedType = "all"; // Default filter type
-
-  // Sample data, you can fetch this from a database or API
-  final List<Resource> resources = [
-    Resource(
-      title: "Past Year Paper 1",
-      pdfUrl: "assets/pdfs/2021 Negeri_Sembilan_MPSM Add_Maths K1.pdf",
-      type: "past_year",
-      icon: Icons.picture_as_pdf, // Icon for PDF
-    ),
-    Resource(
-      title: "Past Year Paper 2",
-      pdfUrl: "assets/pdfs/past_year2.pdf",
-      type: "past_year",
-      icon: Icons.picture_as_pdf,
-    ),
-    Resource(
-      title: "Sample Notes",
-      pdfUrl: "assets/pdfs/sample_notes.pdf",
-      type: "notes",
-      icon: Icons.note, // Icon for notes
-    ),
-    Resource(
-      title: "Video Tutorial",
-      pdfUrl: "https://www.youtube.com/watch?v=TRt4Y6c0ql0&list=RDCK8xR68agG4&index=2", // Example YouTube link
-      type: "video",
-      icon: Icons.play_circle_fill, // Icon for video
-    ),
-    // Add more materials as needed
-  ];
 
   Color _getIconColor(String type) {
     switch (type) {
@@ -61,14 +33,14 @@ class _MaterialsScreenState extends State<MaterialsScreen> {
   Widget build(BuildContext context) {
     // Filter resources based on selected type
     List<Resource> filteredResources = selectedType == "all"
-        ? resources
-        : resources.where((resource) => resource.type == selectedType).toList();
+        ? widget.resources // Use only resources for the selected subject
+        : widget.resources.where((resource) => resource.type == selectedType).toList();
 
     return Scaffold(
       appBar: AppBar(
         title: Text("${widget.subjectName} Resources"),
       ),
-      body: SingleChildScrollView( // Make the body scrollable
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -88,44 +60,50 @@ class _MaterialsScreenState extends State<MaterialsScreen> {
             const Divider(thickness: 2), // Add a divider for separation
             // Resource list
             Padding(
-              padding: const EdgeInsets.all(16.0), // Add padding around the list
-              child: ListView.builder(
-                itemCount: filteredResources.length,
-                shrinkWrap: true, // Allows ListView to fit within the scrollable area
-                physics: const NeverScrollableScrollPhysics(), // Prevents nested scrolling issues
-                itemBuilder: (context, index) {
-                  return Card( // Use Card widget for better styling
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: ListTile(
-                      leading: Icon(
-                        filteredResources[index].icon,
-                        color: _getIconColor(filteredResources[index].type), // Set icon color
-                      ),
-                      title: Text(filteredResources[index].title),
-                      onTap: () {
-                        // Navigate to the appropriate preview screen based on resource type
-                        if (filteredResources[index].type == 'video') {
-                          // Navigate to Video preview page
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => VideoPreviewScreen(videoUrl: filteredResources[index].pdfUrl),
+              padding: const EdgeInsets.all(16.0),
+              child: filteredResources.isNotEmpty
+                  ? ListView.builder(
+                      itemCount: filteredResources.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return Card(
+                          margin: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: ListTile(
+                            leading: Icon(
+                              filteredResources[index].icon,
+                              color: _getIconColor(filteredResources[index].type),
                             ),
-                          );
-                        } else {
-                          // Navigate to PDF preview page
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PdfPreviewScreen(pdfUrl: filteredResources[index].pdfUrl),
-                            ),
-                          );
-                        }
+                            title: Text(filteredResources[index].title),
+                            onTap: () {
+                              // Navigate to the appropriate preview screen based on resource type
+                              if (filteredResources[index].type == 'video') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => VideoPreviewScreen(videoUrl: filteredResources[index].pdfUrl),
+                                  ),
+                                );
+                              } else {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => PdfPreviewScreen(pdfUrl: filteredResources[index].pdfUrl),
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                        );
                       },
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        'No resources available for this category.',
+                        style: TextStyle(fontSize: 16, color: Colors.grey),
+                      ),
                     ),
-                  );
-                },
-              ),
             ),
           ],
         ),
@@ -158,8 +136,8 @@ class _MaterialsScreenState extends State<MaterialsScreen> {
           selectedType = selected ? filterType : "all"; // Update selected type
         });
       },
-      selectedColor: Theme.of(context).primaryColor, // Use primary color for selected chip
-      backgroundColor: Colors.grey[300], // Use a light background for unselected chips
+      selectedColor: Theme.of(context).primaryColor,
+      backgroundColor: Colors.grey[300],
       labelStyle: TextStyle(
         color: selectedType == filterType ? Colors.white : Colors.black,
       ),
