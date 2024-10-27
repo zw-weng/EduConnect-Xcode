@@ -26,7 +26,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       "description": "Booked or save the lectures for future reference."
     },
     {
-      "title": "Get Online Certificate",
+      "title": "Get Online Tuition",
       "description": "Analyse your scores and track your results."
     },
   ];
