@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:demo/widgets/profile_card.dart';
-import 'package:demo/widgets/profile_form_page.dart';
+import 'package:educonnect/widgets/profile_card.dart';
+import 'package:educonnect/widgets/profile_form_page.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
