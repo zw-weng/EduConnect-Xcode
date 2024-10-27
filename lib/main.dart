@@ -45,11 +45,11 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/onboarding', // Set the initial route to onboarding screen
       routes: {
-        '/onboarding': (context) => OnboardingScreen(),
-        '/login': (context) => LoginPage(),
-        '/register': (context) => RegisterPage(),
-        '/fillProfile': (context) => FillProfileScreen(),
-        '/home': (context) => BaseScreen(),
+        '/onboarding': (context) => const OnboardingScreen(),
+        '/login': (context) => const LoginPage(),
+        '/register': (context) => const RegisterPage(),
+        '/fillProfile': (context) => const FillProfileScreen(),
+        '/home': (context) => const BaseScreen(),
       },
     );
   }
