@@ -3,7 +3,7 @@ class Tutor {
 
   final String name;
 
-  final String subject; // Add this line
+  final String subject; 
 
   final double rating;
 
@@ -19,7 +19,7 @@ class Tutor {
 
     required this.name,
 
-    required this.subject, // Add this line
+    required this.subject, 
 
     required this.rating,
 
