@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:educonnect/models/resource.dart'; // Ensure this points to your Resource model
-import 'package:educonnect/screens/pdf_preview_screen.dart'; // Ensure this points to your PDF preview screen
+import 'package:educonnect/screens/pdf_preview_screen.dart'; // PDF preview screen
+import 'package:educonnect/screens/video_preview_screen.dart'; // Video preview screen
 
 class MaterialsScreen extends StatefulWidget {
   final String subjectName;
@@ -36,7 +37,7 @@ class _MaterialsScreenState extends State<MaterialsScreen> {
     ),
     Resource(
       title: "Video Tutorial",
-      pdfUrl: "assets/videos/tutorial.mp4",
+      pdfUrl: "https://www.youtube.com/watch?v=TRt4Y6c0ql0&list=RDCK8xR68agG4&index=2", // Example YouTube link
       type: "video",
       icon: Icons.play_circle_fill, // Icon for video
     ),
@@ -102,13 +103,24 @@ class _MaterialsScreenState extends State<MaterialsScreen> {
                       ),
                       title: Text(filteredResources[index].title),
                       onTap: () {
-                        // Navigate to PDF preview page
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => PdfPreviewScreen(pdfUrl: filteredResources[index].pdfUrl),
-                          ),
-                        );
+                        // Navigate to the appropriate preview screen based on resource type
+                        if (filteredResources[index].type == 'video') {
+                          // Navigate to Video preview page
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => VideoPreviewScreen(videoUrl: filteredResources[index].pdfUrl),
+                            ),
+                          );
+                        } else {
+                          // Navigate to PDF preview page
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PdfPreviewScreen(pdfUrl: filteredResources[index].pdfUrl),
+                            ),
+                          );
+                        }
                       },
                     ),
                   );
