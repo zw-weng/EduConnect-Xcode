@@ -1,3 +1,4 @@
+import 'package:educonnect/widgets/floating_video_button.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -75,6 +76,7 @@ class _VideoPreviewScreenState extends State<VideoPreviewScreen> {
             ),
         ],
       ),
+      floatingActionButton: FloatingVideoButton(videoUrl: widget.videoUrl), // Add the floating button here
     );
   }
 }
