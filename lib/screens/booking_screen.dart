@@ -1,7 +1,6 @@
 import 'package:educonnect/constants/colors.dart';
 import 'package:flutter/material.dart';
 import '../models/tutor.dart';
-import '../models/session.dart';
 import '../widgets/session_card.dart';
 
 class BookingScreen extends StatelessWidget {
