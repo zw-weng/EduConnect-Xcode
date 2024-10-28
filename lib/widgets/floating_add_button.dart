@@ -8,10 +8,10 @@ class FloatingAddButton extends StatelessWidget {
   final Function(String, Resource) onResourceAdded;
 
   const FloatingAddButton({
-    Key? key,
+    super.key,
     required this.courses,
     required this.onResourceAdded,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -26,7 +26,7 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
   File? selectedFile;
 
   Future<void> _pickFile() async {
-    final params = OpenFileDialogParams(
+    final params = const OpenFileDialogParams(
       fileExtensionsFilter: ['pdf'],
     );
     final filePath = await FlutterFileDialog.pickFile(params: params);
@@ -38,12 +38,16 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
   }
 
   void _addResource() {
-    if (selectedCourse != null && title.isNotEmpty && (selectedType == 'video' ? videoUrl != null : selectedFile != null)) {
+    if (selectedCourse != null &&
+        title.isNotEmpty &&
+        (selectedType == 'video' ? videoUrl != null : selectedFile != null)) {
       Resource newResource = Resource(
         title: title,
         pdfUrl: selectedType == 'video' ? videoUrl! : selectedFile!.path,
         type: selectedType,
-        icon: selectedType == 'video' ? Icons.play_circle_fill : Icons.picture_as_pdf,
+        icon: selectedType == 'video'
+            ? Icons.play_circle_fill
+            : Icons.picture_as_pdf,
       );
 
       widget.onResourceAdded(selectedCourse!, newResource);
@@ -91,9 +95,9 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
             ),
             const SizedBox(height: 20),
             TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Title",
-                prefixIcon: const Icon(Icons.title),
+                prefixIcon: Icon(Icons.title),
                 border: OutlineInputBorder(),
               ),
               onChanged: (value) {
@@ -126,16 +130,17 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
               items: <String>['past_year', 'notes', 'video'].map((String type) {
                 return DropdownMenuItem<String>(
                   value: type,
-                  child: Text(type[0].toUpperCase() + type.substring(1)), // Capitalize first letter
+                  child: Text(type[0].toUpperCase() +
+                      type.substring(1)), // Capitalize first letter
                 );
               }).toList(),
             ),
             const SizedBox(height: 20),
             if (selectedType == 'video') ...[
               TextField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Video URL",
-                  prefixIcon: const Icon(Icons.video_library),
+                  prefixIcon: Icon(Icons.video_library),
                   border: OutlineInputBorder(),
                 ),
                 onChanged: (value) {
@@ -153,20 +158,22 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
               ),
-              if (selectedFile != null) 
+              if (selectedFile != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
-                  child: Text("Selected File: ${selectedFile!.path.split('/').last}"),
+                  child: Text(
+                      "Selected File: ${selectedFile!.path.split('/').last}"),
                 ),
             ],
             const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: _addResource,
-                child: const Text("Add Resource"),
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                 ),
+                child: const Text("Add Resource"),
               ),
             ),
           ],
