@@ -37,13 +37,23 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
     }
   }
 
-  void _addResource() {
+  Future<void> _addResource() async {
     if (selectedCourse != null &&
         title.isNotEmpty &&
         (selectedType == 'video' ? videoUrl != null : selectedFile != null)) {
+      
+      String resourcePath;
+
+      // If selected type is 'video', use the video URL directly; otherwise, use the selected file path
+      if (selectedType == 'video') {
+        resourcePath = videoUrl!;
+      } else {
+        resourcePath = selectedFile!.path; // Directly use the file path
+      }
+
       Resource newResource = Resource(
         title: title,
-        pdfUrl: selectedType == 'video' ? videoUrl! : selectedFile!.path,
+        pdfUrl: resourcePath,
         type: selectedType,
         icon: selectedType == 'video'
             ? Icons.play_circle_fill
@@ -126,7 +136,8 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
                   videoUrl = null;
                   selectedFile = null;
                 });
-              }, hint: '',
+              },
+              hint: '',
             ),
             const SizedBox(height: 20),
             if (selectedType == 'video') ...[

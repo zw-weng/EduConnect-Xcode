@@ -29,6 +29,18 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
         type: "past_year",
         icon: Icons.picture_as_pdf,
       ),
+      Resource(
+        title: "2021 Negeri_Sembilan_MPSM Add_Maths K1 Answer",
+        pdfUrl: "assets/pdfs/2021 Negeri_Sembilan_MPSM Add_Maths K1 Jawapan.pdf",
+        type: "past_year",
+        icon: Icons.picture_as_pdf,
+      ),
+      Resource(
+        title: "Calculus Cheat Sheet",
+        pdfUrl: "assets/pdfs/calculus cheat sheet.pdf",
+        type: "notes",
+        icon: Icons.picture_as_pdf,
+      ),
       // Additional resources...
     ],
     "Biology": [

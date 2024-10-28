@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
 import 'package:flutter/services.dart';
+import 'package:path/path.dart' as path; // Import the path package
+import 'package:educonnect/widgets/floating_download_button.dart';
 
 class PdfPreviewScreen extends StatefulWidget {
   final String pdfUrl;
@@ -18,20 +20,23 @@ class _PdfPreviewScreenState extends State<PdfPreviewScreen> {
 
   Future<void> _loadPdf() async {
     try {
-      final ByteData bytes = await rootBundle.load(widget.pdfUrl);
-      final Uint8List data = bytes.buffer.asUint8List();
+      // Check if the PDF is stored as an asset
+      if (widget.pdfUrl.startsWith('assets/')) {
+        final ByteData bytes = await rootBundle.load(widget.pdfUrl);
+        final Uint8List data = bytes.buffer.asUint8List();
+        final document = await PdfDocument.openData(data);
+        _pdfController = PdfController(document: Future.value(document));
+      } else {
+        // Load PDF from file path (e.g., documents directory)
+        final document = await PdfDocument.openFile(widget.pdfUrl);
+        _pdfController = PdfController(document: Future.value(document));
+      }
 
-      // Load the PDF document
-      final document = await PdfDocument.openData(data);
-
-      // Initialize the controller with the loaded document
-      _pdfController = PdfController(document: Future.value(document));
-
+      final document = await _pdfController!.document;
       setState(() {
-        totalPages = document.pagesCount;
+        totalPages = document.pagesCount; // Get total pages from the document
       });
     } catch (e) {
-      print("Error loading PDF: $e");
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Failed to load PDF")),
       );
@@ -40,15 +45,17 @@ class _PdfPreviewScreenState extends State<PdfPreviewScreen> {
 
   void _goToNextPage() {
     if (_pdfController != null && currentPage < totalPages) {
-      setState(() => currentPage++);
+      currentPage++;
       _pdfController!.jumpToPage(currentPage - 1);
+      setState(() {}); // Call setState after updating currentPage
     }
   }
 
   void _goToPreviousPage() {
     if (_pdfController != null && currentPage > 1) {
-      setState(() => currentPage--);
+      currentPage--;
       _pdfController!.jumpToPage(currentPage - 1);
+      setState(() {}); // Call setState after updating currentPage
     }
   }
 
@@ -60,15 +67,29 @@ class _PdfPreviewScreenState extends State<PdfPreviewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Extract the filename from pdfUrl
+    final fileName = path.basename(widget.pdfUrl);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("PDF Viewer"),
-        backgroundColor: Colors.red,
       ),
       body: _pdfController == null
-          ? const Center(child: CircularProgressIndicator()) // Show loading indicator while PDF loads
+          ? const Center(child: CircularProgressIndicator())
           : Column(
               children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(fileName), // Display the PDF file name
+                      ],
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -100,6 +121,10 @@ class _PdfPreviewScreenState extends State<PdfPreviewScreen> {
                 ),
               ],
             ),
+      floatingActionButton: FloatingDownloadButton(
+        pdfUrl: widget.pdfUrl,
+        fileName: fileName, // Pass the real file name to the download button
+      ),
     );
   }
 
