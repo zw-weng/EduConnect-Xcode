@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
-                  children: courses.map((course) => CourseCard(course: course)).toList(),
+                  children: courses.map((course) => CourseCard(course: course, onTap: () {  }, resources: const [],)).toList(),
                 ),
               ),
             ),

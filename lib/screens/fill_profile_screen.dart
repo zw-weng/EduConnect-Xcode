@@ -3,7 +3,7 @@ import 'package:educonnect/widgets/app_logo.dart';
 import 'package:educonnect/widgets/profile_form.dart';
 
 class FillProfileScreen extends StatefulWidget {
-  const FillProfileScreen({super.key});
+  const FillProfileScreen({Key? key}) : super(key: key);
 
   @override
   _FillProfileScreenState createState() => _FillProfileScreenState();
@@ -35,6 +35,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
     }
   }
 
+  // Continue function with navigation to home page
   void _continue() {
     if (_formKey.currentState!.validate()) {
       // Here you can handle profile saving logic
@@ -45,7 +46,8 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
       print('Phone Number: ${_phoneNumberController.text}');
       print('Gender: $_selectedGender');
 
-      // Navigate to the next screen if necessary
+      // Navigate to the home screen after profile completion
+      Navigator.pushReplacementNamed(context, '/home');
     }
   }
 
@@ -101,7 +103,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                     });
                   },
                   onSelectDate: () => _selectDate(context),
-                  onContinue: _continue,
+                  onContinue: _continue, // Updated to navigate to home
                 ),
               ],
             ),

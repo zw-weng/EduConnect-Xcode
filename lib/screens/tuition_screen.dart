@@ -49,11 +49,11 @@ class _TuitionScreenState extends State<TuitionScreen> {
         ),
         centerTitle: true,
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              stops: const [0.1, 0.5],
+              stops: [0.1, 0.5],
               colors: [
                 kPrimaryLight,
                 kPrimaryColor,
@@ -78,12 +78,13 @@ class _TuitionScreenState extends State<TuitionScreen> {
                 },
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () async {
                 final result = await Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => BookTutorScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const BookTutorScreen()),
                 );
 
                 if (result != null) {
@@ -98,10 +99,12 @@ class _TuitionScreenState extends State<TuitionScreen> {
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 154, 41, 206), // Button color
-                padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                backgroundColor:
+                    const Color.fromARGB(255, 154, 41, 206), // Button color
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 32.0, vertical: 16.0),
               ),
-              child: Text(
+              child: const Text(
                 'Book a Tutor',
                 style: TextStyle(
                   fontSize: 18.0,
@@ -114,4 +117,3 @@ class _TuitionScreenState extends State<TuitionScreen> {
       ),
     );
   }
-}

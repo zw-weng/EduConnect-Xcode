@@ -16,22 +16,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'MyApp',
+      title: 'EduConnect',
       theme: ThemeData(
-        // Using colorScheme to define primary and secondary colors
+        // Using ColorScheme to define primary and secondary colors
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.blue,
         ).copyWith(
           secondary: Colors.amber, // Secondary color (accent)
         ),
-        scaffoldBackgroundColor:
-            const Color(0xFFF5F7FA), // Light background color for the entire app
+        scaffoldBackgroundColor: const Color(
+            0xFFF5F7FA), // Light background color for the entire app
         fontFamily: 'Poppins', // Custom font if needed
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.blue, // Button color across the app
             textStyle: const TextStyle(
-                fontWeight: FontWeight.bold), // Text style for buttons
+              fontWeight: FontWeight.bold,
+            ), // Text style for buttons
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
@@ -42,14 +43,25 @@ class MyApp extends StatelessWidget {
             borderSide: BorderSide.none,
           ),
         ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFFF5F7FA), // Light background for AppBar
+          elevation: 0, // No shadow
+          iconTheme: IconThemeData(color: Color(0xFF1F2C37)), // Icon color
+          titleTextStyle: TextStyle(
+            color: Color(0xFF1F2C37),
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins',
+          ),
+        ),
       ),
       initialRoute: '/onboarding', // Set the initial route to onboarding screen
       routes: {
-        '/onboarding': (context) => OnboardingScreen(),
-        '/login': (context) => LoginPage(),
-        '/register': (context) => RegisterPage(),
-        '/fillProfile': (context) => FillProfileScreen(),
-        '/home': (context) => BaseScreen(),
+        '/onboarding': (context) => const OnboardingScreen(),
+        '/login': (context) => const LoginPage(),
+        '/register': (context) => const RegisterPage(),
+        '/fillProfile': (context) => const FillProfileScreen(),
+        '/home': (context) => const BaseScreen(),
       },
     );
   }

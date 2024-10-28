@@ -1,21 +1,30 @@
 import 'package:educonnect/models/course.dart';
-import 'package:educonnect/screens/material_screen.dart';
+import 'package:educonnect/models/resource.dart';
+import 'package:educonnect/screens/materials_screen.dart';
 import 'package:flutter/material.dart';
 
 class CourseCard extends StatelessWidget {
   final Course course;
+  final List<Resource> resources; // Add this line to include resources
 
-  const CourseCard({super.key, required this.course});
+  const CourseCard({
+    super.key,
+    required this.course,
+    required this.resources, required Null Function() onTap, // Update constructor
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigate to the MaterialsScreen with the subject name
+        // Navigate to the MaterialsScreen with the subject name and relevant resources
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => MaterialsScreen(subjectName: course.name),
+            builder: (context) => MaterialsScreen(
+              subjectName: course.name,
+              resources: resources, // Pass resources
+            ),
           ),
         );
       },
