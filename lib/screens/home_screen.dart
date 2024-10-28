@@ -1,13 +1,13 @@
 import 'package:educonnect/constants/colors.dart';
+import 'package:educonnect/models/resource.dart';
 import 'package:educonnect/models/session.dart';
+import 'package:educonnect/widgets/resource_card.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/services.dart';
 import 'package:educonnect/widgets/search_field.dart';
 import 'package:educonnect/widgets/tutor_card.dart'; // Define a TutorCard widget for slidable tutors
 import 'package:educonnect/models/tutor.dart'; // Define Tutor model
-import 'package:educonnect/models/course.dart';
-import 'package:educonnect/widgets/course_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Tutor(
       name: "Jotaro",
       rating: 4.8,
-      imageUrl: 'assets/images/tutor.jpg',
+      imageUrl: 'assets/images/jotaro.png',
       course: 'Physics',
       subject: 'Science',
       description: 'Experienced Physics tutor',
@@ -36,9 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     ),
     Tutor(
-      name: "Ali bin Abu",
+      name: "Siti Norleha",
       rating: 5.0,
-      imageUrl: 'assets/images/tutor.jpg',
+      imageUrl: 'assets/images/siti.jpg',
       course: 'Add Math',
       subject: 'Mathematics',
       description: 'Expert in Additional Mathematics',
@@ -55,9 +55,9 @@ class _HomeScreenState extends State<HomeScreen> {
     Tutor(
       name: "Suzana Li",
       rating: 4.8,
-      imageUrl: 'assets/images/tutor.jpg',
-      course: 'Coding',
-      subject: 'Computer Science',
+      imageUrl: 'assets/images/suzana.jpg',
+      course: 'Biology',
+      subject: 'Science',
       description: 'Professional Coding instructor',
       availableSessions: [
         Session(
@@ -71,8 +71,25 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ];
 
-  final List<Course> courses = [
-    
+  final List<Resource> topResources = [
+    Resource(
+      title: "Calculus Past Year Papers",
+      type: "past_year",
+      pdfUrl: "assets/pdfs/calculus_papers.pdf",
+      icon: Icons.assignment,
+    ),
+    Resource(
+      title: "Introduction to Programming Notes",
+      type: "notes",
+      pdfUrl: "assets/pdfs/programming_notes.pdf",
+      icon: Icons.notes,
+    ),
+    Resource(
+      title: "Web Development Video Tutorial",
+      type: "video",
+      pdfUrl: "https://www.example.com/video",
+      icon: Icons.videocam,
+    ),
   ];
 
   @override
@@ -105,27 +122,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Explore Resources",
+                    "Top Resources This Month",
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      // Add action for See All button
-                    },
-                    child: const Text("See All", style: TextStyle(color: Colors.blue)),
                   ),
                 ],
               ),
             ),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: courses.map((course) => CourseCard(course: course, onTap: () {  }, resources: const [],)).toList(),
-                ),
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: topResources.map((resource) {
+                  return ResourceCard(
+                    resource: resource,
+                    installs: '1000+',
+                  );
+                }).toList(),
               ),
+            ),
             ),
           ],
         ),

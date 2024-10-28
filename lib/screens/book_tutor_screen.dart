@@ -33,7 +33,7 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
         subject: 'AddMaths',
         rating: 4.5,
         description: 'Experienced math tutor with 10 years of teaching experience.',
-        imageUrl: 'https://example.com/john_doe.jpg',
+        imageUrl: '',
         course: 'Algebra',
         availableSessions: [
           Session(
@@ -54,7 +54,7 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
         subject: 'Biology',
         rating: 4.7,
         description: 'Passionate science tutor with a focus on practical learning.',
-        imageUrl: 'https://example.com/jane_smith.jpg',
+        imageUrl: '',
         course: 'Biology',
         availableSessions: [
           Session(
@@ -75,7 +75,7 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
         subject: 'Physics',
         rating: 4.6,
         description: 'Expert in physics with a focus on conceptual understanding.',
-        imageUrl: 'https://example.com/alice_johnson.jpg',
+        imageUrl: '',
         course: 'Physics',
         availableSessions: [
           Session(
@@ -96,7 +96,7 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
         subject: 'Maths',
         rating: 4.4,
         description: 'Skilled math tutor with a focus on problem-solving.',
-        imageUrl: 'https://example.com/bob_brown.jpg',
+        imageUrl: '',
         course: 'Calculus',
         availableSessions: [
           Session(
@@ -117,7 +117,7 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
         subject: 'Science',
         rating: 4.8,
         description: 'Versatile science tutor with a focus on interdisciplinary learning.',
-        imageUrl: 'https://example.com/charlie_davis.jpg',
+        imageUrl: '',
         course: 'Chemistry',
         availableSessions: [
           Session(
@@ -138,7 +138,7 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
         subject: 'History',
         rating: 4.3,
         description: 'Passionate history tutor with a focus on critical thinking.',
-        imageUrl: 'https://example.com/diana_evans.jpg',
+        imageUrl: '',
         course: 'World History',
         availableSessions: [
           Session(
@@ -159,7 +159,7 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
         subject: 'Geography',
         rating: 4.5,
         description: 'Experienced geography tutor with a focus on global awareness.',
-        imageUrl: 'https://example.com/edward_frank.jpg',
+        imageUrl: '',
         course: 'Geography',
         availableSessions: [
           Session(

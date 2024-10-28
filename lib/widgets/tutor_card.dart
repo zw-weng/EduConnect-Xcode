@@ -1,6 +1,6 @@
+import 'package:educonnect/screens/tutor_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:educonnect/models/tutor.dart';
-import '../screens/tutor_detail_screen.dart'; 
 
 class TutorCard extends StatelessWidget {
   final Tutor tutor;
@@ -31,33 +31,11 @@ class TutorCard extends StatelessWidget {
               // Display tutor image
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network(
+                child: Image.asset(
                   tutor.imageUrl,
                   height: 80, // Set height for the image
                   width: 80, // Fixed width for the image
                   fit: BoxFit.cover, // Cover the area while maintaining aspect ratio
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return Center(
-                      child: CircularProgressIndicator(
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                (loadingProgress.expectedTotalBytes ?? 1)
-                            : null,
-                      ),
-                    );
-                  },
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      height: 80, // Set a fixed height for the placeholder
-                      width: 80, // Set a fixed width for the placeholder
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Icon(Icons.error, color: Colors.red), // Error icon
-                    );
-                  },
                 ),
               ),
               const SizedBox(width: 16), // Space between image and text
