@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_document_picker/flutter_document_picker.dart'; // Import the document picker
+import 'package:flutter_file_dialog/flutter_file_dialog.dart';
 import 'package:educonnect/models/course.dart';
 import 'package:educonnect/models/resource.dart';
+import 'dart:io';
 
 class AddResourceScreen extends StatefulWidget {
   final List<Course> courses;
+  final void Function(String courseName, Resource newResource) onResourceAdded;
 
-  const AddResourceScreen({super.key, required this.courses});
+  const AddResourceScreen({
+    super.key,
+    required this.courses,
+    required this.onResourceAdded,
+  });
 
   @override
   _AddResourceScreenState createState() => _AddResourceScreenState();
@@ -14,44 +20,37 @@ class AddResourceScreen extends StatefulWidget {
 
 class _AddResourceScreenState extends State<AddResourceScreen> {
   String? selectedCourse;
-  String selectedType = 'past_year'; // Default type
+  String selectedType = 'past_year';
   String title = '';
-  String? videoUrl; // For storing video URL
-  String? selectedFilePath; // For storing PDF file path
+  String? videoUrl;
+  File? selectedFile;
 
-  void _pickFile() async {
-    // Use flutter_document_picker to pick a document
-    String? path = await FlutterDocumentPicker.openDocument(
-      params: FlutterDocumentPickerParams(
-        allowedMimeTypes: ['application/pdf'], // Specify allowed MIME types
-      ),
+  Future<void> _pickFile() async {
+    final params = OpenFileDialogParams(
+      fileExtensionsFilter: ['pdf'],
     );
-
-    if (path != null) {
+    final filePath = await FlutterFileDialog.pickFile(params: params);
+    if (filePath != null) {
       setState(() {
-        selectedFilePath = path; // Store the path of the selected file
+        selectedFile = File(filePath);
       });
     }
   }
 
   void _addResource() {
-    if (selectedCourse != null && title.isNotEmpty && (selectedType == 'video' ? videoUrl != null : selectedFilePath != null)) {
+    if (selectedCourse != null && title.isNotEmpty && (selectedType == 'video' ? videoUrl != null : selectedFile != null)) {
       Resource newResource = Resource(
         title: title,
-        pdfUrl: selectedType == 'video' ? videoUrl! : selectedFilePath!, // Use file path if not video
+        pdfUrl: selectedType == 'video' ? videoUrl! : selectedFile!.path,
         type: selectedType,
         icon: selectedType == 'video' ? Icons.play_circle_fill : Icons.picture_as_pdf,
       );
 
-      // Logic to save the resource to the selected course's resources
-      // For now, let's just print it to the console
-      print('New resource added: ${newResource.title}');
-
-      Navigator.pop(context); // Go back after adding the resource
+      widget.onResourceAdded(selectedCourse!, newResource);
+      Navigator.pop(context);
     } else {
-      // Show an error message if any required field is missing
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please complete all fields.')),
+        const SnackBar(content: Text('Please complete all fields.')),
       );
     }
   }
@@ -61,14 +60,23 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Add Resource"),
+        backgroundColor: Colors.blueAccent,
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 16),
+            Text(
+              "Select Course",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const SizedBox(height: 8),
             DropdownButton<String>(
               value: selectedCourse,
               hint: const Text("Select Course"),
+              isExpanded: true,
               onChanged: (value) {
                 setState(() {
                   selectedCourse = value;
@@ -83,64 +91,53 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
             ),
             const SizedBox(height: 20),
             TextField(
-              decoration: const InputDecoration(labelText: "Title"),
+              decoration: InputDecoration(
+                labelText: "Title",
+                prefixIcon: const Icon(Icons.title),
+                border: OutlineInputBorder(),
+              ),
               onChanged: (value) {
                 setState(() {
                   title = value;
                 });
               },
             ),
+            const SizedBox(height: 8),
+            const Text(
+              "Please provide a brief title for the resource you are adding.",
+              style: TextStyle(color: Colors.grey),
+            ),
             const SizedBox(height: 20),
-            Row(
-              children: [
-                Expanded(
-                  child: ListTile(
-                    title: const Text('Past Year Paper'),
-                    leading: Radio<String>(
-                      value: 'past_year',
-                      groupValue: selectedType,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedType = value!;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ListTile(
-                    title: const Text('Notes'),
-                    leading: Radio<String>(
-                      value: 'notes',
-                      groupValue: selectedType,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedType = value!;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ListTile(
-                    title: const Text('Video'),
-                    leading: Radio<String>(
-                      value: 'video',
-                      groupValue: selectedType,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedType = value!;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-              ],
+            Text(
+              "Select Resource Type",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const SizedBox(height: 8),
+            DropdownButton<String>(
+              value: selectedType,
+              isExpanded: true,
+              onChanged: (value) {
+                setState(() {
+                  selectedType = value!;
+                  videoUrl = null; // Reset video URL when changing type
+                  selectedFile = null; // Reset selected file when changing type
+                });
+              },
+              items: <String>['past_year', 'notes', 'video'].map((String type) {
+                return DropdownMenuItem<String>(
+                  value: type,
+                  child: Text(type[0].toUpperCase() + type.substring(1)), // Capitalize first letter
+                );
+              }).toList(),
             ),
             const SizedBox(height: 20),
             if (selectedType == 'video') ...[
               TextField(
-                decoration: const InputDecoration(labelText: "Video URL"),
+                decoration: InputDecoration(
+                  labelText: "Video URL",
+                  prefixIcon: const Icon(Icons.video_library),
+                  border: OutlineInputBorder(),
+                ),
                 onChanged: (value) {
                   setState(() {
                     videoUrl = value;
@@ -148,16 +145,29 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
                 },
               ),
             ] else ...[
-              ElevatedButton(
+              ElevatedButton.icon(
                 onPressed: _pickFile,
-                child: const Text("Upload PDF"),
+                icon: const Icon(Icons.upload_file),
+                label: const Text("Upload PDF"),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                ),
               ),
-              if (selectedFilePath != null) Text("Selected File: $selectedFilePath"),
+              if (selectedFile != null) 
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text("Selected File: ${selectedFile!.path.split('/').last}"),
+                ),
             ],
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _addResource,
-              child: const Text("Add Resource"),
+            Center(
+              child: ElevatedButton(
+                onPressed: _addResource,
+                child: const Text("Add Resource"),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                ),
+              ),
             ),
           ],
         ),

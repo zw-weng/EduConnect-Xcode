@@ -4,6 +4,8 @@ import '../widgets/tutor_card.dart';
 import '../constants/colors.dart';
 
 class BookTutorScreen extends StatefulWidget {
+  const BookTutorScreen({super.key});
+
   @override
   _BookTutorScreenState createState() => _BookTutorScreenState();
 }
@@ -137,11 +139,11 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
         ),
         centerTitle: true,
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              stops: const [0.1, 0.5],
+              stops: [0.1, 0.5],
               colors: [
                 kPrimaryLight,
                 kPrimaryColor,
@@ -152,7 +154,7 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
       ),
       body: Column(
         children: [
-          Container(
+          SizedBox(
             height: 50,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,

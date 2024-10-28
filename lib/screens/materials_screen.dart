@@ -97,8 +97,8 @@ class _MaterialsScreenState extends State<MaterialsScreen> {
                         );
                       },
                     )
-                  : Padding(
-                      padding: const EdgeInsets.all(16.0),
+                  : const Padding(
+                      padding: EdgeInsets.all(16.0),
                       child: Text(
                         'No resources available for this category.',
                         style: TextStyle(fontSize: 16, color: Colors.grey),
