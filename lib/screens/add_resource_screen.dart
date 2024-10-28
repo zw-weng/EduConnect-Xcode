@@ -26,7 +26,7 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
   File? selectedFile;
 
   Future<void> _pickFile() async {
-    final params = const OpenFileDialogParams(
+    final params = OpenFileDialogParams(
       fileExtensionsFilter: ['pdf'],
     );
     final filePath = await FlutterFileDialog.pickFile(params: params);
@@ -41,16 +41,10 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
     if (selectedCourse != null &&
         title.isNotEmpty &&
         (selectedType == 'video' ? videoUrl != null : selectedFile != null)) {
-    if (selectedCourse != null &&
-        title.isNotEmpty &&
-        (selectedType == 'video' ? videoUrl != null : selectedFile != null)) {
       Resource newResource = Resource(
         title: title,
         pdfUrl: selectedType == 'video' ? videoUrl! : selectedFile!.path,
         type: selectedType,
-        icon: selectedType == 'video'
-            ? Icons.play_circle_fill
-            : Icons.picture_as_pdf,
         icon: selectedType == 'video'
             ? Icons.play_circle_fill
             : Icons.picture_as_pdf,
@@ -85,8 +79,8 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
             _buildLabel("Select Course"),
             const SizedBox(height: 8),
             _buildDropdownField<String>(
-              value: selectedCourse,
               hint: "Select Course",
+              value: selectedCourse,
               items: widget.courses.map((course) {
                 return DropdownMenuItem(
                   value: course.name,
@@ -120,7 +114,6 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
             const SizedBox(height: 8),
             _buildDropdownField<String>(
               value: selectedType,
-              hint: "Select Resource Type",
               items: <String>['past_year', 'notes', 'video'].map((String type) {
                 return DropdownMenuItem<String>(
                   value: type,
@@ -133,7 +126,7 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
                   videoUrl = null;
                   selectedFile = null;
                 });
-              },
+              }, hint: '',
             ),
             const SizedBox(height: 20),
             if (selectedType == 'video') ...[
@@ -242,8 +235,8 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
     return ElevatedButton(
       onPressed: _pickFile,
       style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-        backgroundColor: Colors.blue,
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+        backgroundColor: Colors.redAccent, // Darker shade for the button
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
