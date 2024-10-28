@@ -26,7 +26,7 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
   File? selectedFile;
 
   Future<void> _pickFile() async {
-    final params = OpenFileDialogParams(
+    final params = const OpenFileDialogParams(
       fileExtensionsFilter: ['pdf'],
     );
     final filePath = await FlutterFileDialog.pickFile(params: params);
@@ -41,10 +41,16 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
     if (selectedCourse != null &&
         title.isNotEmpty &&
         (selectedType == 'video' ? videoUrl != null : selectedFile != null)) {
+    if (selectedCourse != null &&
+        title.isNotEmpty &&
+        (selectedType == 'video' ? videoUrl != null : selectedFile != null)) {
       Resource newResource = Resource(
         title: title,
         pdfUrl: selectedType == 'video' ? videoUrl! : selectedFile!.path,
         type: selectedType,
+        icon: selectedType == 'video'
+            ? Icons.play_circle_fill
+            : Icons.picture_as_pdf,
         icon: selectedType == 'video'
             ? Icons.play_circle_fill
             : Icons.picture_as_pdf,

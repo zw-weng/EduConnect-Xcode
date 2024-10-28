@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/session.dart'; 
-import '../widgets/session_card.dart'; 
-import '../constants/colors.dart'; 
+import '../models/session.dart';
+import '../widgets/session_card.dart';
+import '../constants/colors.dart';
 import 'book_tutor_screen.dart';
 
 class TuitionScreen extends StatefulWidget {
@@ -16,16 +16,16 @@ class _TuitionScreenState extends State<TuitionScreen> {
     Session(
       tutorName: 'John Doe',
       subject: 'Mathematics',
-      date: '2023-10-01', 
-      startTime: '10:00 AM', 
-      endTime: '11:00 AM', 
+      date: '2023-10-01',
+      startTime: '10:00 AM',
+      endTime: '11:00 AM',
     ),
     Session(
       tutorName: 'Jane Smith',
       subject: 'Science',
-      date: '2023-10-02', 
+      date: '2023-10-02',
       startTime: '02:00 PM',
-      endTime: '03:00 PM', 
+      endTime: '03:00 PM',
     ),
     // Add more sessions as needed
   ];
@@ -74,12 +74,15 @@ class _TuitionScreenState extends State<TuitionScreen> {
                 // Navigate to the tutor booking screen
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => BookTutorScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const BookTutorScreen()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 154, 41, 206), // Button color
-                padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                backgroundColor:
+                    const Color.fromARGB(255, 154, 41, 206), // Button color
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 32.0, vertical: 16.0),
               ),
               child: const Text(
                 'Book a Tutor',
@@ -95,4 +98,3 @@ class _TuitionScreenState extends State<TuitionScreen> {
     );
   }
 }
-
