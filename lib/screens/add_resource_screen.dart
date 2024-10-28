@@ -38,12 +38,16 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
   }
 
   void _addResource() {
-    if (selectedCourse != null && title.isNotEmpty && (selectedType == 'video' ? videoUrl != null : selectedFile != null)) {
+    if (selectedCourse != null &&
+        title.isNotEmpty &&
+        (selectedType == 'video' ? videoUrl != null : selectedFile != null)) {
       Resource newResource = Resource(
         title: title,
         pdfUrl: selectedType == 'video' ? videoUrl! : selectedFile!.path,
         type: selectedType,
-        icon: selectedType == 'video' ? Icons.play_circle_fill : Icons.picture_as_pdf,
+        icon: selectedType == 'video'
+            ? Icons.play_circle_fill
+            : Icons.picture_as_pdf,
       );
 
       widget.onResourceAdded(selectedCourse!, newResource);
@@ -58,44 +62,42 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF5F9FF),
       appBar: AppBar(
         title: const Text("Add Resource"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: const Color(0xFF6849EF), // Your primary color
+        foregroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 16),
-            Text(
-              "Select Course",
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+            _buildLabel("Select Course"),
             const SizedBox(height: 8),
-            DropdownButton<String>(
+            _buildDropdownField<String>(
               value: selectedCourse,
-              hint: const Text("Select Course"),
-              isExpanded: true,
-              onChanged: (value) {
-                setState(() {
-                  selectedCourse = value;
-                });
-              },
+              hint: "Select Course",
               items: widget.courses.map((course) {
                 return DropdownMenuItem(
                   value: course.name,
                   child: Text(course.name),
                 );
               }).toList(),
+              onChanged: (value) {
+                setState(() {
+                  selectedCourse = value;
+                });
+              },
             ),
             const SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                labelText: "Title",
-                prefixIcon: const Icon(Icons.title),
-                border: OutlineInputBorder(),
-              ),
+            _buildInputField(
+              label: "Title",
+              hintText: "Enter resource title",
+              icon: Icons.title,
               onChanged: (value) {
                 setState(() {
                   title = value;
@@ -108,36 +110,31 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
               style: TextStyle(color: Colors.grey),
             ),
             const SizedBox(height: 20),
-            Text(
-              "Select Resource Type",
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+            _buildLabel("Select Resource Type"),
             const SizedBox(height: 8),
-            DropdownButton<String>(
+            _buildDropdownField<String>(
               value: selectedType,
-              isExpanded: true,
-              onChanged: (value) {
-                setState(() {
-                  selectedType = value!;
-                  videoUrl = null; // Reset video URL when changing type
-                  selectedFile = null; // Reset selected file when changing type
-                });
-              },
+              hint: "Select Resource Type",
               items: <String>['past_year', 'notes', 'video'].map((String type) {
                 return DropdownMenuItem<String>(
                   value: type,
-                  child: Text(type[0].toUpperCase() + type.substring(1)), // Capitalize first letter
+                  child: Text(type[0].toUpperCase() + type.substring(1)),
                 );
               }).toList(),
+              onChanged: (value) {
+                setState(() {
+                  selectedType = value!;
+                  videoUrl = null;
+                  selectedFile = null;
+                });
+              },
             ),
             const SizedBox(height: 20),
             if (selectedType == 'video') ...[
-              TextField(
-                decoration: InputDecoration(
-                  labelText: "Video URL",
-                  prefixIcon: const Icon(Icons.video_library),
-                  border: OutlineInputBorder(),
-                ),
+              _buildInputField(
+                label: "Video URL",
+                hintText: "Paste video URL",
+                icon: Icons.video_library,
                 onChanged: (value) {
                   setState(() {
                     videoUrl = value;
@@ -145,33 +142,108 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
                 },
               ),
             ] else ...[
-              ElevatedButton.icon(
-                onPressed: _pickFile,
-                icon: const Icon(Icons.upload_file),
-                label: const Text("Upload PDF"),
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                ),
-              ),
-              if (selectedFile != null) 
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Text("Selected File: ${selectedFile!.path.split('/').last}"),
-                ),
+              _buildFileUploadButton(),
             ],
             const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: _addResource,
-                child: const Text("Add Resource"),
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                  foregroundColor: Colors.white,
+                  backgroundColor: const Color(0xFF6849EF), // Your primary color
+                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
+                child: const Text("Add Resource"),
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildLabel(String label) {
+    return Text(
+      label,
+      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
+    );
+  }
+
+  Widget _buildDropdownField<T>({
+    T? value,
+    required String hint,
+    required List<DropdownMenuItem<T>> items,
+    required ValueChanged<T?> onChanged,
+  }) {
+    return DropdownButtonFormField<T>(
+      value: value,
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
+        ),
+      ),
+      hint: Text(hint),
+      isExpanded: true,
+      onChanged: onChanged,
+      items: items,
+    );
+  }
+
+  Widget _buildInputField({
+    required String label,
+    required String hintText,
+    required IconData icon,
+    required ValueChanged<String> onChanged,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildLabel(label),
+        const SizedBox(height: 8),
+        TextField(
+          onChanged: onChanged,
+          decoration: InputDecoration(
+            hintText: hintText,
+            prefixIcon: Icon(icon, color: const Color(0xFF6849EF)), // Primary color for icons
+            filled: true,
+            fillColor: Colors.white,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none,
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(color: Color(0xFF6849EF)), // Primary color
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildFileUploadButton() {
+    return ElevatedButton(
+      onPressed: _pickFile,
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      child: const Text("Upload PDF"),
     );
   }
 }
