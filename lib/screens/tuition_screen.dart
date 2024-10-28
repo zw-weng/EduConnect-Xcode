@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../models/session.dart'; 
-import '../widgets/session_card.dart'; 
-import '../constants/colors.dart'; 
+import '../models/session.dart';
+import '../widgets/session_card.dart';
+import '../constants/colors.dart';
 import 'book_tutor_screen.dart';
+
 
 class TuitionScreen extends StatefulWidget {
   const TuitionScreen({super.key});
@@ -16,19 +17,25 @@ class _TuitionScreenState extends State<TuitionScreen> {
     Session(
       tutorName: 'John Doe',
       subject: 'Mathematics',
-      date: '2023-10-01', 
-      startTime: '10:00 AM', 
-      endTime: '11:00 AM', 
+      date: '2023-10-01',
+      startTime: '10:00 AM',
+      endTime: '11:00 AM',
     ),
     Session(
       tutorName: 'Jane Smith',
       subject: 'Science',
-      date: '2023-10-02', 
+      date: '2023-10-02',
       startTime: '02:00 PM',
-      endTime: '03:00 PM', 
+      endTime: '03:00 PM',
     ),
     // Add more sessions as needed
   ];
+
+  void addSession(Session session) {
+    setState(() {
+      upcomingSessions.add(session);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,18 +71,31 @@ class _TuitionScreenState extends State<TuitionScreen> {
               child: ListView.builder(
                 itemCount: upcomingSessions.length,
                 itemBuilder: (context, index) {
-                  return SessionCard(session: upcomingSessions[index]);
+                  return SessionCard(
+                    session: upcomingSessions[index],
+                    onJoin: () {}, // No need to handle tap here
+                  );
                 },
               ),
             ),
             SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: () {
-                // Navigate to the tutor booking screen
-                Navigator.push(
+              onPressed: () async {
+                final result = await Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => BookTutorScreen()),
                 );
+
+                if (result != null) {
+                  // Handle booking logic
+                  addSession(result);
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Booking successful!'),
+                    ),
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 154, 41, 206), // Button color
@@ -95,4 +115,3 @@ class _TuitionScreenState extends State<TuitionScreen> {
     );
   }
 }
-

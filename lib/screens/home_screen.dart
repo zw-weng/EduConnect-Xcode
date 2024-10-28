@@ -1,4 +1,5 @@
 import 'package:educonnect/constants/colors.dart';
+import 'package:educonnect/models/session.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/services.dart';
@@ -17,9 +18,57 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<Tutor> tutors = [
-    Tutor(name: "Jotaro", rating: 4.8, imageUrl: 'assets/images/tutor.jpg', course: 'Physics', subject: 'Science', description: 'Experienced Physics tutor'),
-    Tutor(name: "Ali bin Abu", rating: 5.0, imageUrl: 'assets/images/tutor.jpg', course: 'Add Math', subject: 'Mathematics', description: 'Expert in Additional Mathematics'),
-    Tutor(name: "Suzana Li", rating: 4.8, imageUrl: 'assets/images/tutor.jpg', course: 'Coding', subject: 'Computer Science', description: 'Professional Coding instructor'),
+    Tutor(
+      name: "Jotaro",
+      rating: 4.8,
+      imageUrl: 'assets/images/tutor.jpg',
+      course: 'Physics',
+      subject: 'Science',
+      description: 'Experienced Physics tutor',
+      availableSessions: [
+        Session(
+          tutorName: 'Grace Green',
+          subject: 'English',
+          date: '2023-10-08',
+          startTime: '08:00 PM',
+          endTime: '09:00 PM',
+        ),
+      ],
+    ),
+    Tutor(
+      name: "Ali bin Abu",
+      rating: 5.0,
+      imageUrl: 'assets/images/tutor.jpg',
+      course: 'Add Math',
+      subject: 'Mathematics',
+      description: 'Expert in Additional Mathematics',
+      availableSessions: [
+        Session(
+          tutorName: 'Henry Hill',
+          subject: 'Art',
+          date: '2023-10-09',
+          startTime: '09:00 PM',
+          endTime: '10:00 PM',
+        ),
+      ],
+    ),
+    Tutor(
+      name: "Suzana Li",
+      rating: 4.8,
+      imageUrl: 'assets/images/tutor.jpg',
+      course: 'Coding',
+      subject: 'Computer Science',
+      description: 'Professional Coding instructor',
+      availableSessions: [
+        Session(
+          tutorName: 'Edward Frank',
+          subject: 'Geography',
+          date: '2023-10-07',
+          startTime: '07:00 PM',
+          endTime: '08:00 PM',
+        ),
+      ],
+    ),
   ];
 
   final List<Course> courses = [
