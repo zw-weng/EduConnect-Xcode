@@ -1,0 +1,196 @@
+import 'package:educonnect/constants/colors.dart';
+import 'package:flutter/material.dart';
+import '../models/tutor.dart';
+import 'booking_screen.dart'; 
+
+class TutorDetailScreen extends StatelessWidget {
+  final Tutor tutor;
+
+  TutorDetailScreen({required this.tutor});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          tutor.name,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Colors.white,
+              ),
+        ),
+        centerTitle: true,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              stops: const [0.1, 0.5],
+              colors: [
+                kPrimaryLight,
+                kPrimaryColor,
+              ],
+            ),
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Tutor Name
+            Text(
+              tutor.name,
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8.0),
+            // Subject and Rating
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Subject: ${tutor.subject}',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.star, color: Colors.amber, size: 20),
+                    SizedBox(width: 5),
+                    Text(
+                      '${tutor.rating}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 16.0),
+            // Description
+            Text(
+              'Description:',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              tutor.description,
+              style: TextStyle(
+                fontSize: 16.0,
+              ),
+            ),
+            SizedBox(height: 16.0),
+            // Reviews
+            Text(
+              'Reviews:',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8.0),
+            // Dummy reviews
+            _buildReview('Student A', 'Great tutor!'),
+            _buildReview('Student B', 'Very knowledgeable and helpful.'),
+            SizedBox(height: 16.0),
+            // Book Now Button
+            ElevatedButton(
+              onPressed: () async {
+                final result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BookingScreen(tutor: tutor),
+                  ),
+                );
+
+                if (result != null) {
+                  // Handle booking logic
+                  _showCustomSnackBar(context, 'Booking successful!');
+                  Navigator.pop(context, result); // Return to TuitionScreen with the result
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 154, 41, 206),
+                padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+              ),
+              child: Text(
+                'Book Now',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildReview(String studentName, String reviewText) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              studentName,
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              reviewText,
+              style: TextStyle(
+                fontSize: 14.0,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showCustomSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Container(
+          padding: EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            color: Colors.green,
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: Text(
+            message,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        duration: Duration(seconds: 2),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+      ),
+    );
+  }
+}
