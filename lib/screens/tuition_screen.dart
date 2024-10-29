@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import '../models/session.dart';
-import '../widgets/session_card.dart';
-import '../constants/colors.dart';
-import 'book_tutor_screen.dart';
-
+import 'package:educonnect/models/session.dart';
+import 'package:educonnect/widgets/session_card.dart';
+import 'package:educonnect/constants/colors.dart';
+import 'package:educonnect/screens/book_tutor_screen.dart';
 
 class TuitionScreen extends StatefulWidget {
   const TuitionScreen({super.key});

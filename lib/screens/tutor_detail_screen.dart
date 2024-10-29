@@ -89,18 +89,48 @@ class TutorDetailScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16.0),
-            // Reviews
+            // Available Sessions
             const Text(
-              'Reviews:',
+              'Available Sessions:',
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8.0),
-            // Dummy reviews
-            _buildReview('Student A', 'Great tutor!'),
-            _buildReview('Student B', 'Very knowledgeable and helpful.'),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: tutor.availableSessions.length,
+              itemBuilder: (context, index) {
+                final session = tutor.availableSessions[index];
+                return Card(
+                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Date: ${session.date}',
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 8.0),
+                        Text(
+                          'Time: ${session.startTime} - ${session.endTime}',
+                          style: const TextStyle(
+                            fontSize: 14.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
             const SizedBox(height: 16.0),
             // Book Now Button
             ElevatedButton(

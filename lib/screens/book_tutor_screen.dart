@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/tutor.dart';
 import '../models/session.dart'; // Import the Session model
-import '../widgets/tutor_card.dart';
+import '../widgets/tuition_card.dart'; // Update the import
 import '../constants/colors.dart';
+import 'tutor_detail_screen.dart'; // Import the TutorDetailScreen
 
 class BookTutorScreen extends StatefulWidget {
   const BookTutorScreen({super.key});
@@ -33,7 +34,7 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
         subject: 'AddMaths',
         rating: 4.5,
         description: 'Experienced math tutor with 10 years of teaching experience.',
-        imageUrl: '',
+        imageUrl: 'assets/images/jotaro.png',
         course: 'Algebra',
         availableSessions: [
           Session(
@@ -54,7 +55,7 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
         subject: 'Biology',
         rating: 4.7,
         description: 'Passionate science tutor with a focus on practical learning.',
-        imageUrl: '',
+        imageUrl: 'assets/images/siti.jpg',
         course: 'Biology',
         availableSessions: [
           Session(
@@ -75,7 +76,7 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
         subject: 'Physics',
         rating: 4.6,
         description: 'Expert in physics with a focus on conceptual understanding.',
-        imageUrl: '',
+        imageUrl: 'assets/images/suzana.jpg',
         course: 'Physics',
         availableSessions: [
           Session(
@@ -89,132 +90,6 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
         ],
       ),
       // Add more Physics tutors as needed
-    ],
-    [
-      Tutor(
-        name: 'Bob Brown',
-        subject: 'Maths',
-        rating: 4.4,
-        description: 'Skilled math tutor with a focus on problem-solving.',
-        imageUrl: '',
-        course: 'Calculus',
-        availableSessions: [
-          Session(
-            tutorName: 'Bob Brown',
-            subject: 'Maths',
-            date: '2023-10-04',
-            startTime: '04:00 PM',
-            endTime: '05:00 PM',
-          ),
-          // Add more sessions as needed
-        ],
-      ),
-      // Add more Maths tutors as needed
-    ],
-    [
-      Tutor(
-        name: 'Charlie Davis',
-        subject: 'Science',
-        rating: 4.8,
-        description: 'Versatile science tutor with a focus on interdisciplinary learning.',
-        imageUrl: '',
-        course: 'Chemistry',
-        availableSessions: [
-          Session(
-            tutorName: 'Charlie Davis',
-            subject: 'Science',
-            date: '2023-10-05',
-            startTime: '05:00 PM',
-            endTime: '06:00 PM',
-          ),
-          // Add more sessions as needed
-        ],
-      ),
-      // Add more Science tutors as needed
-    ],
-    [
-      Tutor(
-        name: 'Diana Evans',
-        subject: 'History',
-        rating: 4.3,
-        description: 'Passionate history tutor with a focus on critical thinking.',
-        imageUrl: '',
-        course: 'World History',
-        availableSessions: [
-          Session(
-            tutorName: 'Diana Evans',
-            subject: 'History',
-            date: '2023-10-06',
-            startTime: '06:00 PM',
-            endTime: '07:00 PM',
-          ),
-          // Add more sessions as needed
-        ],
-      ),
-      // Add more History tutors as needed
-    ],
-    [
-      Tutor(
-        name: 'Edward Frank',
-        subject: 'Geography',
-        rating: 4.5,
-        description: 'Experienced geography tutor with a focus on global awareness.',
-        imageUrl: '',
-        course: 'Geography',
-        availableSessions: [
-          Session(
-            tutorName: 'Edward Frank',
-            subject: 'Geography',
-            date: '2023-10-07',
-            startTime: '07:00 PM',
-            endTime: '08:00 PM',
-          ),
-          // Add more sessions as needed
-        ],
-      ),
-      // Add more Geography tutors as needed
-    ],
-    [
-      Tutor(
-        name: 'Grace Green',
-        subject: 'English',
-        rating: 4.7,
-        description: 'Skilled English tutor with a focus on language and literature.',
-        imageUrl: 'https://example.com/grace_green.jpg',
-        course: 'English Literature',
-        availableSessions: [
-          Session(
-            tutorName: 'Grace Green',
-            subject: 'English',
-            date: '2023-10-08',
-            startTime: '08:00 PM',
-            endTime: '09:00 PM',
-          ),
-          // Add more sessions as needed
-        ],
-      ),
-      // Add more English tutors as needed
-    ],
-    [
-      Tutor(
-        name: 'Henry Hill',
-        subject: 'Art',
-        rating: 4.6,
-        description: 'Creative art tutor with a focus on visual arts and design.',
-        imageUrl: 'https://example.com/henry_hill.jpg',
-        course: 'Art History',
-        availableSessions: [
-          Session(
-            tutorName: 'Henry Hill',
-            subject: 'Art',
-            date: '2023-10-09',
-            startTime: '09:00 PM',
-            endTime: '10:00 PM',
-          ),
-          // Add more sessions as needed
-        ],
-      ),
-      // Add more Art tutors as needed
     ],
   ];
 
@@ -272,12 +147,27 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: tutorsBySubject[_selectedSubjectIndex].length,
-              itemBuilder: (context, index) {
-                return TutorCard(tutor: tutorsBySubject[_selectedSubjectIndex][index]);
-              },
-            ),
+            child: _selectedSubjectIndex < tutorsBySubject.length
+                ? ListView.builder(
+                    itemCount: tutorsBySubject[_selectedSubjectIndex].length,
+                    itemBuilder: (context, index) {
+                      return TuitionCard(
+                        tutor: tutorsBySubject[_selectedSubjectIndex][index],
+                        onBook: () {
+                          // Navigate to TutorDetailScreen
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TutorDetailScreen(tutor: tutorsBySubject[_selectedSubjectIndex][index]),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  )
+                : const Center(
+                    child: Text('No tutors available for this subject.'),
+                  ),
           ),
         ],
       ),
