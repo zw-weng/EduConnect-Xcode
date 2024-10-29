@@ -26,7 +26,7 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
   File? selectedFile;
 
   Future<void> _pickFile() async {
-    final params = const OpenFileDialogParams(
+    const params = OpenFileDialogParams(
       fileExtensionsFilter: ['pdf'],
     );
     final filePath = await FlutterFileDialog.pickFile(params: params);
@@ -41,7 +41,6 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
     if (selectedCourse != null &&
         title.isNotEmpty &&
         (selectedType == 'video' ? videoUrl != null : selectedFile != null)) {
-      
       String resourcePath;
 
       // If selected type is 'video', use the video URL directly; otherwise, use the selected file path
@@ -160,8 +159,10 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
                 onPressed: _addResource,
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
-                  backgroundColor: const Color(0xFF6849EF), // Your primary color
-                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 40),
+                  backgroundColor:
+                      const Color(0xFF6849EF), // Your primary color
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 40),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -196,7 +197,8 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide.none,
@@ -224,17 +226,20 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
           onChanged: onChanged,
           decoration: InputDecoration(
             hintText: hintText,
-            prefixIcon: Icon(icon, color: const Color(0xFF6849EF)), // Primary color for icons
+            prefixIcon: Icon(icon,
+                color: const Color(0xFF6849EF)), // Primary color for icons
             filled: true,
             fillColor: Colors.white,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color: Color(0xFF6849EF)), // Primary color
+              borderSide:
+                  const BorderSide(color: Color(0xFF6849EF)), // Primary color
             ),
           ),
         ),

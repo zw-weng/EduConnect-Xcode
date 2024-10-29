@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:educonnect/widgets/profile_text_field.dart';
 import 'package:educonnect/widgets/gender_dropdown.dart';
+import 'package:educonnect/constants/colors.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});
@@ -51,18 +52,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F7FA),
+      backgroundColor: kBackColor,
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF5F7FA),
+        backgroundColor: kBackColor,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Color(0xFF1F2C37)),
+          icon: const Icon(Icons.arrow_back, color: kTextColor),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
           'Edit Profile',
           style: TextStyle(
-            color: Color(0xFF1F2C37),
+            color: kTextColor,
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
           ),
@@ -120,7 +121,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   child: ElevatedButton(
                     onPressed: _saveChanges,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF1F2C37),
+                      backgroundColor: kPrimaryColor,
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
