@@ -18,20 +18,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   // Data for onboarding screens
   final List<Map<String, String>> _onboardingData = [
     {
-      "image": "assets/images/online_learning.png",
-      "title": "Online Learning",
-      "description": "We Provide Online Classes and Pre-recorded Lectures.!"
-    },
-    {
-      "image": "assets/images/learn_anytime.png",
-      "title": "Learn from Anytime",
-      "description": "Booked or save the lectures for future reference."
-    },
-    {
-      "image": "assets/images/online_certificate.png",
-      "title": "Get Online Certificate",
-      "description": "Analyse your scores and track your results."
-    },
+    "image": "assets/images/Main img.png",
+    "title": "Online Tutoring",
+    "description": "We provide online tuition and allow you to book sessions with expert tutors."
+  },
+  {
+    "image": "assets/images/Main img 1.png",
+    "title": "Learn from Anytime",
+    "description": "Download resources and access them offline, ensuring you can learn anytime, anywhere."
+  },
+  {
+    "image": "assets/images/Main img 2.png",
+    "title": "Share Resources",
+    "description": "Upload and share your own resources with others, fostering a collaborative learning environment."
+  }
   ];
 
   // Skip action - Navigate to Login page
