@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/services.dart';
 import 'package:educonnect/widgets/search_field.dart';
-import 'package:educonnect/widgets/tutor_card.dart'; // Define a TutorCard widget for slidable tutors
-import 'package:educonnect/models/tutor.dart'; // Define Tutor model
+import 'package:educonnect/widgets/tutor_card.dart';
+import 'package:educonnect/models/tutor.dart';
+import 'package:educonnect/screens/pdf_preview_screen.dart';
+import 'package:educonnect/screens/video_preview_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -100,48 +102,66 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const AppBar(),
+            const CustomAppBar(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               child: Text(
                 "Recommended Tutors",
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
             ),
             CarouselSlider(
-              options: CarouselOptions(height: 160, enlargeCenterPage: true, enableInfiniteScroll: true),
+              options: CarouselOptions(
+                height: 160,
+                enlargeCenterPage: true,
+                enableInfiniteScroll: true,
+              ),
               items: tutors.map((tutor) {
-                return TutorCard(tutor: tutor); // Create a custom TutorCard widget
+                return TutorCard(tutor: tutor);
               }).toList(),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Top Resources This Month",
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                ],
+              child: Text(
+                "Top Resources This Month",
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
             ),
             Expanded(
-              child: SingleChildScrollView(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: topResources.map((resource) {
-                  return ResourceCard(
-                    resource: resource,
-                    installs: '1000+',
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                itemCount: topResources.length,
+                itemBuilder: (context, index) {
+                  final resource = topResources[index];
+                  return GestureDetector(
+                    onTap: () {
+                      if (resource.type == 'video') {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => VideoPreviewScreen(videoUrl: resource.pdfUrl),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PdfPreviewScreen(pdfUrl: resource.pdfUrl),
+                          ),
+                        );
+                      }
+                    },
+                    child: ResourceCard(
+                      resource: resource,
+                      installs: '1000+',
+                    ),
                   );
-                }).toList(),
+                },
               ),
-            ),
             ),
           ],
         ),
@@ -150,8 +170,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class AppBar extends StatelessWidget {
-  const AppBar({super.key});
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -185,7 +205,7 @@ class AppBar extends StatelessWidget {
                 children: [
                   Text(
                     "Hello,\nGood Morning",
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
@@ -193,14 +213,14 @@ class AppBar extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text(
                     "Welcome back!",
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Colors.white70,
                         ),
                   ),
                 ],
               ),
               const CircleAvatar(
-                backgroundImage: AssetImage('assets/images/malaysia-flag-1.jpg'), // Fixed asset path
+                backgroundImage: AssetImage('assets/images/malaysia-flag-1.jpg'),
                 radius: 25,
               ),
             ],
