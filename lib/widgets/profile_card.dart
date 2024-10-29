@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class ProfileCard extends StatelessWidget {
   final String fullName;
   final String email;
+  final VoidCallback onEdit;
 
   const ProfileCard({
     super.key,
     required this.fullName,
     required this.email,
+    required this.onEdit,
   });
 
   @override
@@ -28,6 +30,12 @@ class ProfileCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          CircleAvatar(
+            radius: 40,
+            backgroundColor: Colors.grey[300],
+            child: Icon(Icons.person, size: 40, color: Colors.white),
+          ),
+          const SizedBox(height: 10),
           Text(
             fullName,
             style: const TextStyle(
@@ -46,6 +54,13 @@ class ProfileCard extends StatelessWidget {
           ),
           const SizedBox(height: 20.0),
           Divider(color: Colors.grey[300]),
+          ListTile(
+            leading: const Icon(Icons.edit, color: Color(0xFF1F2C37)),
+            title: const Text('Edit Profile'),
+            trailing:
+                const Icon(Icons.arrow_forward_ios, color: Color(0xFF1F2C37)),
+            onTap: onEdit,
+          ),
         ],
       ),
     );
