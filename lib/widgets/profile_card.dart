@@ -1,3 +1,4 @@
+// ProfileCard.dart
 import 'package:flutter/material.dart';
 import 'package:educonnect/constants/colors.dart';
 
@@ -5,12 +6,14 @@ class ProfileCard extends StatelessWidget {
   final String fullName;
   final String email;
   final VoidCallback onEdit;
+  final VoidCallback onLogout;
 
   const ProfileCard({
     super.key,
     required this.fullName,
     required this.email,
     required this.onEdit,
+    required this.onLogout,
   });
 
   @override
@@ -31,10 +34,10 @@ class ProfileCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             radius: 40,
             backgroundColor: kPrimaryLight,
-            child: const Icon(Icons.person, size: 50, color: Colors.white),
+            child: Icon(Icons.person, size: 50, color: Colors.white),
           ),
           const SizedBox(height: 16.0),
           Text(
@@ -66,6 +69,18 @@ class ProfileCard extends StatelessWidget {
             ),
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: onEdit,
+          ),
+          const Divider(color: Colors.grey),
+          ListTile(
+            leading: const Icon(Icons.logout, color: Colors.red),
+            title: const Text(
+              "Logout",
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.red,
+              ),
+            ),
+            onTap: onLogout,
           ),
         ],
       ),
