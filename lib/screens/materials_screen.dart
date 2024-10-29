@@ -1,3 +1,4 @@
+import 'package:educonnect/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:educonnect/models/resource.dart'; // Ensure this points to your Resource model
 import 'package:educonnect/screens/pdf_preview_screen.dart'; // PDF preview screen
@@ -25,7 +26,7 @@ class _MaterialsScreenState extends State<MaterialsScreen> {
       case "video":
         return Colors.green; // Color for videos
       default:
-        return Colors.black; // Default color
+        return kTextColor; // Default color
     }
   }
 

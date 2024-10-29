@@ -99,71 +99,77 @@ class _HomeScreenState extends State<HomeScreen> {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustomAppBar(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-              child: Text(
-                "Recommended Tutors",
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+        body: Container(
+          color: kPrimaryLight, // Set the background color
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CustomAppBar(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                child: Text(
+                  "Recommended Tutors",
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: kTextColor,
+                      ),
+                ),
               ),
-            ),
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 160,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: true,
+              CarouselSlider(
+                options: CarouselOptions(
+                  height: 160,
+                  enlargeCenterPage: true,
+                  enableInfiniteScroll: true,
+                ),
+                items: tutors.map((tutor) {
+                  return TutorCard(tutor: tutor);
+                }).toList(),
               ),
-              items: tutors.map((tutor) {
-                return TutorCard(tutor: tutor);
-              }).toList(),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-              child: Text(
-                "Top Resources This Month",
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                child: Text(
+                  "Top Resources This Month",
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: kTextColor,
+                      ),
+                ),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                itemCount: topResources.length,
-                itemBuilder: (context, index) {
-                  final resource = topResources[index];
-                  return GestureDetector(
-                    onTap: () {
-                      if (resource.type == 'video') {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => VideoPreviewScreen(videoUrl: resource.pdfUrl),
-                          ),
-                        );
-                      } else {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => PdfPreviewScreen(pdfUrl: resource.pdfUrl),
-                          ),
-                        );
-                      }
-                    },
-                    child: ResourceCard(
-                      resource: resource,
-                      installs: '1000+',
-                    ),
-                  );
-                },
+              Expanded(
+                child: ListView.builder(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  itemCount: topResources.length,
+                  itemBuilder: (context, index) {
+                    final resource = topResources[index];
+
+                    return GestureDetector(
+                      onTap: () {
+                        if (resource.type == 'video') {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => VideoPreviewScreen(videoUrl: resource.pdfUrl),
+                            ),
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PdfPreviewScreen(pdfUrl: resource.pdfUrl),
+                            ),
+                          );
+                        }
+                      },
+                      child: ResourceCard(
+                        resource: resource,
+                        installs: '1000+',
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -225,8 +231,9 @@ class CustomAppBar extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 20), // Increased space below search bar
           const SearchField(),
+          const SizedBox(height: 20), // Additional spacing for better layout
         ],
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:educonnect/constants/colors.dart';
 import 'package:educonnect/widgets/floating_video_button.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -44,7 +45,7 @@ class _VideoPreviewScreenState extends State<VideoPreviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Video Preview"),
+        title: const Text("Video Player"),
         centerTitle: true,
         elevation: 4.0,
       ),
@@ -69,7 +70,7 @@ class _VideoPreviewScreenState extends State<VideoPreviewScreen> {
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: kTextColor,
                 ),
                 textAlign: TextAlign.center,
               ),
