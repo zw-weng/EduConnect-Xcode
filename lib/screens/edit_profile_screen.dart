@@ -19,7 +19,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController _dobController =
       TextEditingController(text: "1990-01-01");
   final TextEditingController _emailController =
-      TextEditingController(text: "hernandex.redial@gmail.ac.in");
+      TextEditingController(text: "test@gmail.com");
   final TextEditingController _phoneNumberController =
       TextEditingController(text: "+91 987-848-1225");
 

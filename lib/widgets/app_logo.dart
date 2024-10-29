@@ -13,7 +13,7 @@ class AppLogo extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         const Text(
-          'Getting Started !',
+          'Welcome to EduConnect !',
           style: TextStyle(
             fontSize: 26.0,
             fontWeight: FontWeight.bold,

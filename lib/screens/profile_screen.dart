@@ -1,3 +1,4 @@
+// ProfileScreen.dart
 import 'package:flutter/material.dart';
 import 'package:educonnect/widgets/profile_card.dart';
 import 'edit_profile_screen.dart';
@@ -6,6 +7,14 @@ import 'package:educonnect/constants/colors.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
+  // Logout function
+  void _logout(BuildContext context) {
+    Navigator.pushReplacementNamed(context, '/login'); // Adjust route as needed
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Logged out successfully!')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,10 +22,6 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: kBackColor,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: kTextColor),
-          onPressed: () => Navigator.pop(context),
-        ),
         title: const Text(
           'Profile',
           style: TextStyle(
@@ -34,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
             children: [
               ProfileCard(
                 fullName: "Alex",
-                email: "hernandex.redial@gmail.ac.in",
+                email: "test@gmail.com",
                 onEdit: () {
                   Navigator.push(
                     context,
@@ -42,6 +47,7 @@ class ProfileScreen extends StatelessWidget {
                         builder: (context) => const EditProfileScreen()),
                   );
                 },
+                onLogout: () => _logout(context),
               ),
               const Spacer(),
             ],
