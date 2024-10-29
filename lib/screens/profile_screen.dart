@@ -11,13 +11,20 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _fullNameController = TextEditingController();
-  final TextEditingController _nickNameController = TextEditingController();
-  final TextEditingController _dobController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _phoneNumberController = TextEditingController();
 
-  String? _selectedGender;
+  // Initial user data
+  final TextEditingController _fullNameController =
+      TextEditingController(text: "Alex");
+  final TextEditingController _nickNameController =
+      TextEditingController(text: "Lex");
+  final TextEditingController _dobController =
+      TextEditingController(text: "1990-01-01"); // Format as YYYY-MM-DD
+  final TextEditingController _emailController =
+      TextEditingController(text: "hernandex.redial@gmail.ac.in");
+  final TextEditingController _phoneNumberController =
+      TextEditingController(text: "+91 987-848-1225");
+
+  String? _selectedGender = 'Male'; // Initial gender selection
   final List<String> _genderOptions = ['Male', 'Female', 'Other'];
 
   // Function to show date picker for Date of Birth
@@ -30,7 +37,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
     if (pickedDate != null) {
       setState(() {
-        _dobController.text = "${pickedDate.toLocal()}".split(' ')[0];
+        _dobController.text =
+            "${pickedDate.toLocal()}".split(' ')[0]; // Format as YYYY-MM-DD
       });
     }
   }
@@ -81,9 +89,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               children: [
                 // Profile Card
-                const ProfileCard(
-                  fullName: 'Alex',
-                  email: 'hernandex.redial@gmail.ac.in',
+                ProfileCard(
+                  fullName: _fullNameController.text,
+                  email: _emailController.text,
                 ),
 
                 const SizedBox(height: 20),
