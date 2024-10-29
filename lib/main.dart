@@ -4,8 +4,11 @@ import 'package:educonnect/screens/login_screen.dart';
 import 'package:educonnect/screens/onboarding_screen.dart';
 import 'package:educonnect/screens/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart'; // Import Firebase Core
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure bindings are initialized
+  await Firebase.initializeApp(); // Initialize Firebase
   runApp(const MyApp());
 }
 
