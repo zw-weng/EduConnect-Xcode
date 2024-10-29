@@ -68,7 +68,12 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Select Your Subject"),
+        title: Text(
+          "Course Resources",
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Colors.white,
+              ),
+        ),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -77,8 +82,8 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
               end: Alignment.bottomRight,
               stops: [0.1, 0.5],
               colors: [
-                kPrimaryLight,
-                kPrimaryColor,
+                kPrimaryLight, // Light gradient color
+                kPrimaryColor, // Dark gradient color
               ],
             ),
           ),

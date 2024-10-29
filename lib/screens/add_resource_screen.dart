@@ -1,3 +1,4 @@
+import 'package:educonnect/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_file_dialog/flutter_file_dialog.dart';
 import 'package:educonnect/models/course.dart';
@@ -20,13 +21,13 @@ class AddResourceScreen extends StatefulWidget {
 
 class _AddResourceScreenState extends State<AddResourceScreen> {
   String? selectedCourse;
-  String? selectedType;
+  String selectedType = 'past_year';
   String title = '';
   String? videoUrl;
   File? selectedFile;
 
   Future<void> _pickFile() async {
-    const params = OpenFileDialogParams(
+    final params = const OpenFileDialogParams(
       fileExtensionsFilter: ['pdf'],
     );
     final filePath = await FlutterFileDialog.pickFile(params: params);
@@ -53,7 +54,7 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
       Resource newResource = Resource(
         title: title,
         pdfUrl: resourcePath,
-        type: selectedType!,
+        type: selectedType,
         icon: selectedType == 'video'
             ? Icons.play_circle_fill
             : Icons.picture_as_pdf,
@@ -90,8 +91,8 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
               end: Alignment.bottomRight,
               stops: [0.1, 0.5],
               colors: [
-                Color(0xFF886FF2), // kPrimaryLight
-                Color(0xFF6849EF), // kPrimaryColor
+                kPrimaryLight, // kPrimaryLight
+                kPrimaryColor, // kPrimaryColor
               ],
             ),
           ),
@@ -134,15 +135,17 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
               },
             ),
             const SizedBox(height: 8),
-            const Text(
+            Text(
               "Please provide a brief title for the resource you are adding.",
-              style: TextStyle(color: Colors.blueGrey, fontSize: 14),
+              style: TextStyle(
+                color: Color(0xFF4A4A4A), // kTextColor for subtitle text
+                fontSize: 14,
+              ),
             ),
             const SizedBox(height: 20),
             _buildLabel("Select Resource Type"),
             const SizedBox(height: 8),
             _buildDropdownField<String>(
-              hint: "Select Resource Type",
               value: selectedType,
               items: <String>['past_year', 'notes', 'video'].map((String type) {
                 return DropdownMenuItem<String>(
@@ -157,6 +160,7 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
                   selectedFile = null;
                 });
               },
+              hint: '',
             ),
             const SizedBox(height: 20),
             if (selectedType == 'video') ...[
@@ -173,19 +177,25 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
             ] else ...[
               _buildFileUploadButton(),
             ],
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             Center(
               child: ElevatedButton(
                 onPressed: _addResource,
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
-                  backgroundColor: const Color(0xFF6849EF), // Primary color
-                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 40),
+                  backgroundColor: kPrimaryColor, // Primary color
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 18,
+                      horizontal: 60), // Increased padding for larger button
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text("Add Resource"),
+                child: const Text(
+                  "Add Resource",
+                  style: TextStyle(
+                      fontSize: 17), // Adjust font size for larger button
+                ),
               ),
             ),
           ],
@@ -199,7 +209,7 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
       label,
       style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: kTextColor,
           ),
     );
   }
@@ -214,8 +224,9 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
       value: value,
       decoration: InputDecoration(
         filled: true,
-        fillColor: const Color(0xFFE7ECF3), // Updated to new light gray color
-        contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        fillColor: const Color(0xFFE7ECF3), // Light gray background color
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide.none,
@@ -234,47 +245,53 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
     required IconData icon,
     required ValueChanged<String> onChanged,
   }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildLabel(label),
-        const SizedBox(height: 8),
-        TextField(
-          onChanged: onChanged,
-          decoration: InputDecoration(
-            hintText: hintText,
-            prefixIcon: Icon(icon, color: const Color(0xFF6849EF)),
-            filled: true,
-            fillColor: const Color(0xFFE7ECF3), // Updated to new light gray color
-            contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide.none,
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color: Color(0xFF6849EF)),
-            ),
-          ),
+    return TextField(
+      onChanged: onChanged,
+      decoration: InputDecoration(
+        labelText: label,
+        hintText: hintText,
+        prefixIcon: Icon(icon),
+        filled: true,
+        fillColor: const Color(0xFFE7ECF3), // Light gray background color
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
         ),
-      ],
+      ),
     );
   }
 
   Widget _buildFileUploadButton() {
-    return ElevatedButton.icon(
-      onPressed: _pickFile,
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
-        backgroundColor: Colors.redAccent,
-        foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
+    return GestureDetector(
+      onTap: _pickFile,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        decoration: BoxDecoration(
+          color: const Color(0xFFE7ECF3), // Light gray background color
           borderRadius: BorderRadius.circular(10),
         ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const Icon(Icons.upload_file, color: Colors.grey),
+            const SizedBox(width: 10),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Text(
+                  selectedFile != null
+                      ? selectedFile!.path.split('/').last
+                      : "Upload PDF",
+                  style: const TextStyle(color: Colors.grey),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
-      icon: const Icon(Icons.upload_file),
-      label: const Text("Upload PDF"),
     );
   }
 }
- 
