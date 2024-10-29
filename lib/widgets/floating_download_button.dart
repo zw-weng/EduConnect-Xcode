@@ -7,7 +7,7 @@ class FloatingDownloadButton extends StatelessWidget {
   final String pdfUrl;
   final String fileName;
 
-  const FloatingDownloadButton({Key? key, required this.pdfUrl, required this.fileName}) : super(key: key);
+  const FloatingDownloadButton({super.key, required this.pdfUrl, required this.fileName});
 
   Future<void> _downloadPdf(BuildContext context) async {
     try {
@@ -37,8 +37,8 @@ class FloatingDownloadButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () => _downloadPdf(context),
-      child: const Icon(Icons.download),
       tooltip: 'Download PDF',
+      child: const Icon(Icons.download),
     );
   }
 }

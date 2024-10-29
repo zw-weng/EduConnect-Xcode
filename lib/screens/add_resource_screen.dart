@@ -26,7 +26,7 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
   File? selectedFile;
 
   Future<void> _pickFile() async {
-    final params = OpenFileDialogParams(
+    final params = const OpenFileDialogParams(
       fileExtensionsFilter: ['pdf'],
     );
     final filePath = await FlutterFileDialog.pickFile(params: params);

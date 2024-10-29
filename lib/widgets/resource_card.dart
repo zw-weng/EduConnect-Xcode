@@ -6,10 +6,10 @@ class ResourceCard extends StatelessWidget {
   final String installs;
 
   const ResourceCard({
-    Key? key,
+    super.key,
     required this.resource,
     required this.installs,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

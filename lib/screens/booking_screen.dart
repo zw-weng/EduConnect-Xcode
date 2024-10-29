@@ -6,7 +6,7 @@ import '../widgets/session_card.dart';
 class BookingScreen extends StatelessWidget {
   final Tutor tutor;
 
-  BookingScreen({required this.tutor});
+  const BookingScreen({super.key, required this.tutor});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +20,11 @@ class BookingScreen extends StatelessWidget {
         ),
         centerTitle: true,
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              stops: const [0.1, 0.5],
+              stops: [0.1, 0.5],
               colors: [
                 kPrimaryLight,
                 kPrimaryColor,
@@ -41,12 +41,12 @@ class BookingScreen extends StatelessWidget {
           children: [
             Text(
               'Available Sessions for ${tutor.name}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Expanded(
               child: ListView.builder(
                 itemCount: tutor.availableSessions.length,

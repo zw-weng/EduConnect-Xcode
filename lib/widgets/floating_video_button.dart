@@ -9,9 +9,9 @@ class FloatingVideoButton extends StatelessWidget {
   final String videoUrl;
 
   const FloatingVideoButton({
-    Key? key,
+    super.key,
     required this.videoUrl,
-  }) : super(key: key);
+  });
 
   Future<void> _downloadVideo(BuildContext context) async {
     final yt = YoutubeExplode();
@@ -55,8 +55,8 @@ class FloatingVideoButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () => _downloadVideo(context),
-      child: const Icon(Icons.download),
       tooltip: 'Download Video',
+      child: const Icon(Icons.download),
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:educonnect/widgets/app_logo.dart';
 import 'package:educonnect/widgets/profile_form.dart';
 
 class FillProfileScreen extends StatefulWidget {
-  const FillProfileScreen({Key? key}) : super(key: key);
+  const FillProfileScreen({super.key});
 
   @override
   _FillProfileScreenState createState() => _FillProfileScreenState();

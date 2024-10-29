@@ -6,7 +6,7 @@ import 'booking_screen.dart';
 class TutorDetailScreen extends StatelessWidget {
   final Tutor tutor;
 
-  TutorDetailScreen({required this.tutor});
+  const TutorDetailScreen({super.key, required this.tutor});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +20,11 @@ class TutorDetailScreen extends StatelessWidget {
         ),
         centerTitle: true,
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              stops: const [0.1, 0.5],
+              stops: [0.1, 0.5],
               colors: [
                 kPrimaryLight,
                 kPrimaryColor,
@@ -41,29 +41,29 @@ class TutorDetailScreen extends StatelessWidget {
             // Tutor Name
             Text(
               tutor.name,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             // Subject and Rating
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Subject: ${tutor.subject}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18.0,
                   ),
                 ),
                 Row(
                   children: [
-                    Icon(Icons.star, color: Colors.amber, size: 20),
-                    SizedBox(width: 5),
+                    const Icon(Icons.star, color: Colors.amber, size: 20),
+                    const SizedBox(width: 5),
                     Text(
                       '${tutor.rating}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black54,
                       ),
@@ -72,36 +72,36 @@ class TutorDetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             // Description
-            Text(
+            const Text(
               'Description:',
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Text(
               tutor.description,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16.0,
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             // Reviews
-            Text(
+            const Text(
               'Reviews:',
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             // Dummy reviews
             _buildReview('Student A', 'Great tutor!'),
             _buildReview('Student B', 'Very knowledgeable and helpful.'),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             // Book Now Button
             ElevatedButton(
               onPressed: () async {
@@ -120,9 +120,9 @@ class TutorDetailScreen extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 154, 41, 206),
-                padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
               ),
-              child: Text(
+              child: const Text(
                 'Book Now',
                 style: TextStyle(
                   fontSize: 18.0,
@@ -138,7 +138,7 @@ class TutorDetailScreen extends StatelessWidget {
 
   Widget _buildReview(String studentName, String reviewText) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 8.0),
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -146,15 +146,15 @@ class TutorDetailScreen extends StatelessWidget {
           children: [
             Text(
               studentName,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Text(
               reviewText,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14.0,
               ),
             ),
@@ -168,14 +168,14 @@ class TutorDetailScreen extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Container(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
             color: Colors.green,
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: Text(
             message,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 16.0,
               fontWeight: FontWeight.bold,
@@ -185,11 +185,11 @@ class TutorDetailScreen extends StatelessWidget {
         behavior: SnackBarBehavior.floating,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        duration: Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
         ),
-        margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+        margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
       ),
     );
   }
