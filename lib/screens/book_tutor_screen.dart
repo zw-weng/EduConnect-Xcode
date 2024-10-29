@@ -104,6 +104,10 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
               ),
         ),
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white), // Set the back arrow color to white
+          onPressed: () => Navigator.pop(context),
+        ),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
