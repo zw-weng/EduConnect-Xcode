@@ -19,6 +19,10 @@ class TutorDetailScreen extends StatelessWidget {
               ),
         ),
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white), // Set the back arrow color to white
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -89,48 +93,18 @@ class TutorDetailScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16.0),
-            // Available Sessions
+            // Reviews
             const Text(
-              'Available Sessions:',
+              'Reviews:',
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8.0),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: tutor.availableSessions.length,
-              itemBuilder: (context, index) {
-                final session = tutor.availableSessions[index];
-                return Card(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Date: ${session.date}',
-                          style: const TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 8.0),
-                        Text(
-                          'Time: ${session.startTime} - ${session.endTime}',
-                          style: const TextStyle(
-                            fontSize: 14.0,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
+            _buildReview('Alex', 'Great tutor! Very knowledgeable and patient.'),
+            _buildReview('James', 'Excellent teaching style. Highly recommended!'),
+            _buildReview('Wesley', 'Helped me understand the subject better. Thank you!'),
             const SizedBox(height: 16.0),
             // Book Now Button
             ElevatedButton(
