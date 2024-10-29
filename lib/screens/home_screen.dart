@@ -75,22 +75,22 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Resource> topResources = [
     Resource(
-      title: "Calculus Past Year Papers",
+      title: "2021 Negeri Sembilan MPSM Add Maths K1",
       type: "past_year",
-      pdfUrl: "assets/pdfs/calculus_papers.pdf",
-      icon: Icons.assignment,
+      pdfUrl: "assets/pdfs/2021 Negeri_Sembilan_MPSM Add_Maths K1.pdf",
+      icon: Icons.assignment_rounded,
     ),
     Resource(
-      title: "Introduction to Programming Notes",
+      title: "Energy Changes in Chemical Reactions",
       type: "notes",
-      pdfUrl: "assets/pdfs/programming_notes.pdf",
-      icon: Icons.notes,
+      pdfUrl: "assets/pdfs/Energy Changes in Chemical Reactions.pdf",
+      icon: Icons.sticky_note_2_rounded,
     ),
     Resource(
-      title: "Web Development Video Tutorial",
+      title: "Web Development Full Course by FreeCodeCamp",
       type: "video",
-      pdfUrl: "https://www.example.com/video",
-      icon: Icons.videocam,
+      pdfUrl: "https://youtu.be/nu_pCVPKzTk?si=mSPwNViTEKi0qHYM",
+      icon: Icons.video_library_rounded,
     ),
   ];
 
@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
         body: Container(
-          color: kPrimaryLight, // Set the background color
+          color: kBackColor, // Set the background color
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -210,7 +210,7 @@ class CustomAppBar extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Hello,\nGood Morning",
+                    "Hello,\nGood Day",
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -218,9 +218,10 @@ class CustomAppBar extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    "Welcome back!",
+                    "Welcome back to EduConnect!",
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Colors.white70,
+                          fontWeight: FontWeight.bold,
                         ),
                   ),
                 ],
@@ -231,9 +232,9 @@ class CustomAppBar extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20), // Increased space below search bar
+          const SizedBox(height: 10), // Increased space below search bar
           const SearchField(),
-          const SizedBox(height: 20), // Additional spacing for better layout
+          const SizedBox(height: 10), // Additional spacing for better layout
         ],
       ),
     );

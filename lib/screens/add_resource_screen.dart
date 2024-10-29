@@ -27,7 +27,7 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
   File? selectedFile;
 
   Future<void> _pickFile() async {
-    final params = const OpenFileDialogParams(
+    const params = OpenFileDialogParams(
       fileExtensionsFilter: ['pdf'],
     );
     final filePath = await FlutterFileDialog.pickFile(params: params);
@@ -135,7 +135,7 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
               },
             ),
             const SizedBox(height: 8),
-            Text(
+            const Text(
               "Please provide a brief title for the resource you are adding.",
               style: TextStyle(
                 color: Color(0xFF4A4A4A), // kTextColor for subtitle text
