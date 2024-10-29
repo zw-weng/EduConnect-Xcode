@@ -20,15 +20,26 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kBackColor,
       appBar: AppBar(
-        backgroundColor: kBackColor,
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text(
-          'Profile',
-          style: TextStyle(
-            color: kTextColor,
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              stops: [0.1, 0.5],
+              colors: [
+                kPrimaryLight, // kPrimaryLight
+                kPrimaryColor, // kPrimaryColor
+              ],
+            ),
           ),
+        ),
+        title: Text(
+          "My Profile",
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Colors.white,
+              ),
         ),
         centerTitle: true,
       ),
@@ -49,7 +60,12 @@ class ProfileScreen extends StatelessWidget {
                 },
                 onLogout: () => _logout(context),
               ),
-              const Spacer(),
+              const SizedBox(height: 20), // Space between ProfileCard and image
+              Image.asset(
+                'assets/images/Main img.png', // Replace with your image path
+                height: 200, // Adjust the height as needed
+                fit: BoxFit.cover, // Adjust the fit as needed
+              ),
             ],
           ),
         ),

@@ -80,11 +80,11 @@ class TutorCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 10), // Space between rating and icon with text
                       // Icon with text "View Me"
-                      Row(
+                      const Row(
                         children: [
-                          const Icon(Icons.visibility, color: Colors.blue),
-                          const SizedBox(width: 5),
-                          const Text(
+                          Icon(Icons.visibility, color: Colors.blue),
+                          SizedBox(width: 5),
+                          Text(
                             'View Me',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
