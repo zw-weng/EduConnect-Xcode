@@ -15,7 +15,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController _fullNameController =
       TextEditingController(text: "Alex");
   final TextEditingController _nickNameController =
-      TextEditingController(text: "Lex");
+      TextEditingController(text: "Tan");
   final TextEditingController _dobController =
       TextEditingController(text: "1990-01-01");
   final TextEditingController _emailController =
@@ -24,7 +24,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       TextEditingController(text: "+91 987-848-1225");
 
   String? _selectedGender = 'Male';
-  final List<String> _genderOptions = ['Male', 'Female', 'Other'];
+  final List<String> _genderOptions = ['Male', 'Female'];
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
@@ -128,9 +128,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                     ),
                     child: const Text(
-                      'Save changes',
+                      'Save Changes',
                       style: TextStyle(
-                          fontSize: 16.0, fontWeight: FontWeight.bold),
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white, // Set the font color to white
+                      ),
                     ),
                   ),
                 ),
