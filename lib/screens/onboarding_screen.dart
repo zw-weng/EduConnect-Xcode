@@ -18,15 +18,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   // Data for onboarding screens
   final List<Map<String, String>> _onboardingData = [
     {
+      "image": "assets/images/online_learning.png",
       "title": "Online Learning",
       "description": "We Provide Online Classes and Pre-recorded Lectures.!"
     },
     {
+      "image": "assets/images/learn_anytime.png",
       "title": "Learn from Anytime",
       "description": "Booked or save the lectures for future reference."
     },
     {
-      "title": "Get Online Tuition",
+      "image": "assets/images/online_certificate.png",
+      "title": "Get Online Certificate",
       "description": "Analyse your scores and track your results."
     },
   ];
@@ -86,6 +89,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 },
                 itemBuilder: (context, index) {
                   return OnboardingContent(
+                    image: _onboardingData[index]["image"] ?? "",
                     title: _onboardingData[index]["title"] ?? "",
                     description: _onboardingData[index]["description"] ?? "",
                   );

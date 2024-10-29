@@ -12,12 +12,9 @@ class NextButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
         padding: const EdgeInsets.all(18.0),
-        backgroundColor: const Color(0xFF1E4FF1), // Blue button color
+        backgroundColor: const Color(0xFF1E4FF1),
       ),
-      child: const Icon(
-        Icons.arrow_forward,
-        color: Colors.white,
-      ),
+      child: const Icon(Icons.arrow_forward, color: Colors.white),
     );
   }
 }

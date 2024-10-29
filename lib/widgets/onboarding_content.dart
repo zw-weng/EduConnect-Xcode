@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class OnboardingContent extends StatelessWidget {
+  final String image;
   final String title;
   final String description;
 
   const OnboardingContent({
     super.key,
+    required this.image,
     required this.title,
     required this.description,
   });
@@ -16,9 +18,9 @@ class OnboardingContent extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 50.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Spacer(),
+          Image.asset(image, height: 200),
+          const SizedBox(height: 40),
           Text(
             title,
             style: const TextStyle(
@@ -37,7 +39,6 @@ class OnboardingContent extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-          const Spacer(),
         ],
       ),
     );

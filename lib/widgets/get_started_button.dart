@@ -11,20 +11,20 @@ class GetStartedButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: BorderRadius.circular(24.0),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 14.0),
-        backgroundColor: const Color(0xFF1E4FF1), // Blue button color
+        backgroundColor: const Color(0xFF1E4FF1),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
       ),
       child: const Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             'Get Started',
             style: TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
           ),
           SizedBox(width: 10),
           Icon(Icons.arrow_forward, color: Colors.white),
