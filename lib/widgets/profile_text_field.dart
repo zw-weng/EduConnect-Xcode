@@ -7,12 +7,12 @@ class ProfileTextField extends StatelessWidget {
   final VoidCallback? onTap;
 
   const ProfileTextField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hint,
     this.icon,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

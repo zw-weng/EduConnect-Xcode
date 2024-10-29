@@ -26,7 +26,7 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
   File? selectedFile;
 
   Future<void> _pickFile() async {
-    final params = const OpenFileDialogParams(
+    const params = OpenFileDialogParams(
       fileExtensionsFilter: ['pdf'],
     );
     final filePath = await FlutterFileDialog.pickFile(params: params);
@@ -41,7 +41,6 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
     if (selectedCourse != null &&
         title.isNotEmpty &&
         (selectedType == 'video' ? videoUrl != null : selectedFile != null)) {
-      
       String resourcePath;
 
       // If selected type is 'video', use the video URL directly; otherwise, use the selected file path

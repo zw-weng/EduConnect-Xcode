@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:educonnect/widgets/profile_card.dart';
 import 'edit_profile_screen.dart';
+import 'package:educonnect/constants/colors.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -8,18 +9,18 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F7FA),
+      backgroundColor: kBackColor,
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF5F7FA),
+        backgroundColor: kBackColor,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Color(0xFF1F2C37)),
+          icon: const Icon(Icons.arrow_back, color: kTextColor),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
           'Profile',
           style: TextStyle(
-            color: Color(0xFF1F2C37),
+            color: kTextColor,
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
           ),
@@ -35,7 +36,6 @@ class ProfileScreen extends StatelessWidget {
                 fullName: "Alex",
                 email: "hernandex.redial@gmail.ac.in",
                 onEdit: () {
-                  // Navigate to EditProfileScreen
                   Navigator.push(
                     context,
                     MaterialPageRoute(
