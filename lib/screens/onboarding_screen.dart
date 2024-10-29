@@ -1,3 +1,4 @@
+import 'package:educonnect/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:educonnect/widgets/onboarding_content.dart';
 import 'package:educonnect/widgets/dots_indicator.dart';
@@ -18,20 +19,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   // Data for onboarding screens
   final List<Map<String, String>> _onboardingData = [
     {
-    "image": "assets/images/Main img.png",
-    "title": "Online Tutoring",
-    "description": "We provide online tuition and allow you to book sessions with expert tutors."
-  },
-  {
-    "image": "assets/images/Main img 1.png",
-    "title": "Learn from Anytime",
-    "description": "Download resources and access them offline, ensuring you can learn anytime, anywhere."
-  },
-  {
-    "image": "assets/images/Main img 2.png",
-    "title": "Share Resources",
-    "description": "Upload and share your own resources with others, fostering a collaborative learning environment."
-  }
+      "image": "assets/images/Main img.png",
+      "title": "Online Tutoring",
+      "description": "We provide online tuition and allow you to book sessions with expert tutors."
+    },
+    {
+      "image": "assets/images/Main img 1.png",
+      "title": "Learn from Anytime",
+      "description": "Download resources and access them offline, ensuring you can learn anytime, anywhere."
+    },
+    {
+      "image": "assets/images/Main img 2.png",
+      "title": "Share Resources",
+      "description": "Upload and share your own resources with others, fostering a collaborative learning environment."
+    }
   ];
 
   // Skip action - Navigate to Login page
@@ -70,7 +71,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF1F2C37),
+                      color: kTextColor,
                     ),
                   ),
                 ),
@@ -104,9 +105,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // Dots Indicator
-                  DotsIndicator(
-                    currentPage: _currentPage,
-                    itemCount: _onboardingData.length,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0), // Adjust padding to move dots away from the left
+                    child: DotsIndicator(
+                      currentPage: _currentPage,
+                      itemCount: _onboardingData.length,
+                    ),
                   ),
 
                   // Next or Get Started Button

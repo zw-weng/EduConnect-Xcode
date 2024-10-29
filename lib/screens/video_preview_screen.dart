@@ -49,35 +49,46 @@ class _VideoPreviewScreenState extends State<VideoPreviewScreen> {
         centerTitle: true,
         elevation: 4.0,
       ),
-      body: Column(
+      body: Stack(
         children: [
-          // Display the video player
-          Expanded(
-            child: YoutubePlayer(
-              controller: _controller,
-              showVideoProgressIndicator: true,
-              onReady: () {
-                // You can perform additional actions when the player is ready
-              },
+          Column(
+            children: [
+              // Display the video player
+              Expanded(
+                child: YoutubePlayer(
+                  controller: _controller,
+                  showVideoProgressIndicator: true,
+                  onReady: () {
+                    // You can perform additional actions when the player is ready
+                  },
+                ),
+              ),
+              // Display video title if provided
+              if (widget.videoTitle != null) 
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    widget.videoTitle!,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: kTextColor,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+            ],
+          ),
+          // Position the FAB in the upper-right corner
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: FloatingVideoButton(videoUrl: widget.videoUrl),
             ),
           ),
-          // Display video title if provided
-          if (widget.videoTitle != null) 
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                widget.videoTitle!,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: kTextColor,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
         ],
       ),
-      floatingActionButton: FloatingVideoButton(videoUrl: widget.videoUrl), // Add the floating button here
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:educonnect/constants/colors.dart';
 import 'package:educonnect/screens/add_resource_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:educonnect/models/course.dart';
@@ -27,7 +28,7 @@ class FloatingAddButton extends StatelessWidget {
           ),
         );
       },
-      backgroundColor: Colors.blue, // Use your desired color
+      backgroundColor: kPrimaryLight, // Use your desired color
       child: const Icon(Icons.add),
     );
   }

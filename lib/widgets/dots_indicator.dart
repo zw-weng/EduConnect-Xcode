@@ -1,3 +1,4 @@
+import 'package:educonnect/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class DotsIndicator extends StatelessWidget {
@@ -22,7 +23,7 @@ class DotsIndicator extends StatelessWidget {
           width: currentPage == index ? 24.0 : 8.0,
           decoration: BoxDecoration(
             color: currentPage == index
-                ? const Color(0xFF1E4FF1)
+                ? kPrimaryColor
                 : const Color(0xFFD3D3D3),
             borderRadius: BorderRadius.circular(4.0),
           ),

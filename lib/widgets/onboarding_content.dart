@@ -19,7 +19,12 @@ class OnboardingContent extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(image, height: 200),
+          Image.asset(
+            image,
+            height: 300.0, // Increase the height to make the image bigger
+            width: 300.0, // Increase the width to make the image bigger
+            fit: BoxFit.contain, // Ensure the image fits within the specified dimensions
+          ),
           const SizedBox(height: 40),
           Text(
             title,
