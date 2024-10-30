@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
       imageUrl: 'assets/images/jotaro.png',
       course: 'STPM Physics',
       subject: 'Physics',
-      description: 'Experienced Physics tutor',
+      description: 'Expert in physics with a focus on conceptual understanding.',
       availableSessions: [
         Session(
           tutorName: 'Jotaro Kujo',
@@ -43,12 +43,12 @@ class _HomeScreenState extends State<HomeScreen> {
       imageUrl: 'assets/images/siti.jpg',
       course: 'SPM Add Math',
       subject: 'Add Math',
-      description: 'Expert in Additional Mathematics',
+      description: 'Experienced math tutor with 10 years of teaching experience.',
       availableSessions: [
         Session(
           tutorName: 'Siti Norleha',
           subject: 'Calculus II',
-          date: '2024-10-29',
+          date: '2024-11-10',
           startTime: '08:30 PM',
           endTime: '10:00 PM',
         ),
