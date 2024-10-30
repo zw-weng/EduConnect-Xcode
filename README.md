@@ -63,7 +63,7 @@ This command creates a production-ready APK file in the `build/app/outputs/flutt
 
 
 ### Dependencies
-
+The libraries included in your pubspec.yaml for EduConnect, along with their main functions:
 ### Core Flutter Libraries
 - **`flutter`**: This is the core SDK that provides widgets and tools to create Flutter applications for multiple platforms, including Android, iOS, and the web.
 - **`cupertino_icons`**: Provides Cupertino-styled icons to support iOS design language in the Flutter app. Ideal for cross-platform consistency, particularly for iOS devices.
