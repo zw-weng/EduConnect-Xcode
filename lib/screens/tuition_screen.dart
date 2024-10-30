@@ -15,16 +15,16 @@ class TuitionScreen extends StatefulWidget {
 class _TuitionScreenState extends State<TuitionScreen> {
   List<Session> upcomingSessions = [
     Session(
-      tutorName: 'John Doe',
-      subject: 'Mathematics',
-      date: '2023-10-01',
+      tutorName: 'Lisa Wong',
+      subject: 'React Native Development',
+      date: '2024-11-01',
       startTime: '10:00 AM',
       endTime: '11:00 AM',
     ),
     Session(
-      tutorName: 'Jane Smith',
-      subject: 'Science',
-      date: '2023-10-02',
+      tutorName: 'Danial Abu',
+      subject: 'Thermodynamics',
+      date: '2024-11-11',
       startTime: '02:00 PM',
       endTime: '03:00 PM',
     ),
@@ -42,7 +42,7 @@ class _TuitionScreenState extends State<TuitionScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Session Details"),
+          title: const Text("Session Details"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,10 +52,10 @@ class _TuitionScreenState extends State<TuitionScreen> {
               Text("Date: ${session.date}"),
               Text("Time: ${session.startTime} - ${session.endTime}"),
               const SizedBox(height: 10),
-              Text("Rules:"),
-              Text("1. Be active during the session."),
-              Text("2. Complete any assigned homework."),
-              Text("3. Respect your tutor and peers."),
+              const Text("Rules:"),
+              const Text("1. Be active during the session."),
+              const Text("2. Complete any assigned homework."),
+              const Text("3. Respect your tutor and peers."),
             ],
           ),
           actions: [
@@ -63,7 +63,7 @@ class _TuitionScreenState extends State<TuitionScreen> {
               onPressed: () {
                 Navigator.pop(context); // Close dialog
               },
-              child: Text(
+              child: const Text(
                 "Cancel",
                 style: TextStyle(color: kTextColor), // Text color for cancel
               ),

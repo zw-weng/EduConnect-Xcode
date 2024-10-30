@@ -77,12 +77,12 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Row(
+          title: const Row(
             children: [
-              const Icon(Icons.check_circle,
+              Icon(Icons.check_circle,
                   color: Colors.green), // Success icon
-              const SizedBox(width: 8), // Space between icon and text
-              const Text('Success'),
+              SizedBox(width: 8), // Space between icon and text
+              Text('Success'),
             ],
           ),
           content: const Text('Resource uploaded successfully!'),
