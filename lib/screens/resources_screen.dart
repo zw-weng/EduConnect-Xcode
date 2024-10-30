@@ -79,6 +79,15 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
       ),
       // Additional resources...
     ],
+    "Computing": [
+      Resource(
+        title: "Web Development Full Course by FreeCodeCamp",
+        pdfUrl: "https://youtu.be/nu_pCVPKzTk?si=mSPwNViTEKi0qHYM",
+        type: "video",
+        icon: Icons.video_library,
+      ),
+      // Additional resources...
+    ],
     // Add resources for other subjects similarly
   };
 
