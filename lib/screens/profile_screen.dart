@@ -1,4 +1,3 @@
-// ProfileScreen.dart
 import 'package:flutter/material.dart';
 import 'package:educonnect/widgets/profile_card.dart';
 import 'edit_profile_screen.dart';
@@ -20,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kBackColor,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent, // Make the background transparent
         elevation: 0,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -49,7 +48,7 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             children: [
               ProfileCard(
-                fullName: "Alex",
+                fullName: "Alex Tan",
                 email: "test@gmail.com",
                 onEdit: () {
                   Navigator.push(
@@ -60,12 +59,7 @@ class ProfileScreen extends StatelessWidget {
                 },
                 onLogout: () => _logout(context),
               ),
-              const SizedBox(height: 20), // Space between ProfileCard and image
-              Image.asset(
-                'assets/images/Main img.png', // Replace with your image path
-                height: 200, // Adjust the height as needed
-                fit: BoxFit.cover, // Adjust the fit as needed
-              ),
+              const Spacer(),
             ],
           ),
         ),
