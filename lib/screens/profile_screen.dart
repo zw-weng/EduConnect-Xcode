@@ -28,8 +28,8 @@ class ProfileScreen extends StatelessWidget {
               end: Alignment.bottomRight,
               stops: [0.1, 0.5],
               colors: [
-                kPrimaryLight, // kPrimaryLight
-                kPrimaryColor, // kPrimaryColor
+                kPrimaryLight,
+                kPrimaryColor,
               ],
             ),
           ),
@@ -43,24 +43,33 @@ class ProfileScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              ProfileCard(
-                fullName: "Alex Tan",
-                email: "test@gmail.com",
-                onEdit: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const EditProfileScreen()),
-                  );
-                },
-                onLogout: () => _logout(context),
-              ),
-              const Spacer(),
-            ],
+        child: SingleChildScrollView(
+          // Wrap the entire content in SingleChildScrollView
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                ProfileCard(
+                  fullName: "Alex",
+                  email: "test@gmail.com",
+                  onEdit: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const EditProfileScreen()),
+                    );
+                  },
+                  onLogout: () => _logout(context),
+                ),
+                const SizedBox(
+                    height: 20), // Space between ProfileCard and image
+                Image.asset(
+                  'assets/images/Main img.png', // Replace with your image path
+                  height: 200, // Adjust the height as needed
+                  fit: BoxFit.cover, // Adjust the fit as needed
+                ),
+              ],
+            ),
           ),
         ),
       ),
