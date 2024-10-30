@@ -120,6 +120,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 160,
                   enlargeCenterPage: true,
                   enableInfiniteScroll: true,
+                  autoPlay: true,
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
                 ),
                 items: tutors.map((tutor) {
                   return TutorCard(tutor: tutor);

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../models/tutor.dart';
-import '../models/session.dart'; // Import the Session model
-import '../widgets/tuition_card.dart'; // Update the import
-import '../constants/colors.dart';
-import 'tutor_detail_screen.dart'; // Import the TutorDetailScreen
+import 'package:educonnect/models/tutor.dart';
+import 'package:educonnect/models/session.dart'; // Import the Session model
+import 'package:educonnect/widgets/tuition_card.dart'; // Update the import
+import 'package:educonnect/constants/colors.dart';
+import 'package:educonnect/screens/tutor_detail_screen.dart'; // Import the TutorDetailScreen
 
 class BookTutorScreen extends StatefulWidget {
   const BookTutorScreen({super.key});
@@ -104,10 +104,6 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
               ),
         ),
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white), // Set the back arrow color to white
-          onPressed: () => Navigator.pop(context),
-        ),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -151,27 +147,28 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
             ),
           ),
           Expanded(
-            child: _selectedSubjectIndex < tutorsBySubject.length
-                ? ListView.builder(
-                    itemCount: tutorsBySubject[_selectedSubjectIndex].length,
-                    itemBuilder: (context, index) {
-                      return TuitionCard(
-                        tutor: tutorsBySubject[_selectedSubjectIndex][index],
-                        onBook: () {
-                          // Navigate to TutorDetailScreen
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => TutorDetailScreen(tutor: tutorsBySubject[_selectedSubjectIndex][index]),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  )
-                : const Center(
-                    child: Text('No tutors available for this subject.'),
-                  ),
+            child: ListView.builder(
+              itemCount: tutorsBySubject[_selectedSubjectIndex].length,
+              itemBuilder: (context, index) {
+                return TuitionCard(
+                  tutor: tutorsBySubject[_selectedSubjectIndex][index],
+                  onBook: () async {
+                    // Navigate to TutorDetailScreen
+                    final result = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TutorDetailScreen(tutor: tutorsBySubject[_selectedSubjectIndex][index]),
+                      ),
+                    );
+
+                    if (result != null && result is Session) {
+                      // Handle booking logic
+                      Navigator.pop(context, result);
+                    }
+                  },
+                );
+              },
+            ),
           ),
         ],
       ),

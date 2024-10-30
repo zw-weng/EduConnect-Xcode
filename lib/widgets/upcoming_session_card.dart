@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:educonnect/models/session.dart';
 
-class SessionCard extends StatelessWidget {
+class UpcomingSessionCard extends StatelessWidget {
   final Session session;
   final VoidCallback onJoin;
 
-  const SessionCard({super.key, required this.session, required this.onJoin});
+  const UpcomingSessionCard({super.key, required this.session, required this.onJoin});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +19,17 @@ class SessionCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Tutor Image
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(
+                'assets/images/tutor_image.png', // Replace with actual tutor image path
+                height: 100.0,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(height: 16.0),
             Text(
               session.tutorName,
               style: const TextStyle(
@@ -48,9 +59,12 @@ class SessionCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: onJoin,
-              child: const Text('Join'),
+            Align(
+              alignment: Alignment.center,
+              child: ElevatedButton(
+                onPressed: onJoin,
+                child: const Text('Join'),
+              ),
             ),
           ],
         ),
