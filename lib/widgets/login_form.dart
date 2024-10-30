@@ -1,3 +1,4 @@
+import 'package:educonnect/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatelessWidget {
@@ -102,7 +103,7 @@ class LoginForm extends StatelessWidget {
                 child: const Text(
                   'Forgot Password?',
                   style: TextStyle(
-                    color: Color(0xFF1E4FF1),
+                    color: kPrimaryColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -117,7 +118,7 @@ class LoginForm extends StatelessWidget {
             child: ElevatedButton(
               onPressed: onLogin,
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF1E4FF1), // Blue button color
+                backgroundColor: kPrimaryColor, // Blue button color
                 padding: const EdgeInsets.symmetric(vertical: 14.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
