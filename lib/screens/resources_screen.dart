@@ -16,9 +16,15 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
   final List<Course> courses = [
     Course(name: "Add Maths", iconPath: "assets/icons/addmath.png"),
     Course(name: "Biology", iconPath: "assets/icons/bio.png"),
+    Course(name: "Computer Science", iconPath: "assets/icons/comp.png"),
+    Course(name: "Chemistry", iconPath: "assets/icons/chemi.png"),
     Course(name: "Physics", iconPath: "assets/icons/phy.png"),
     Course(name: "English", iconPath: "assets/icons/eng.png"),
-    Course(name: "Chemistry", iconPath: "assets/icons/chemi.png"),
+    Course(name: "Malay Language", iconPath: "assets/icons/malay.png"),
+    Course(name: "History", iconPath: "assets/icons/hist.png"),
+    Course(name: "Accounting", iconPath: "assets/icons/acc.png"),
+    Course(name: "Arts", iconPath: "assets/icons/arts.png"),
+    Course(name: "Business", iconPath: "assets/icons/business.png"),
   ];
 
   final Map<String, List<Resource>> courseResources = {
@@ -49,6 +55,27 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
         pdfUrl: "https://youtu.be/9Eb1LX87TY0?si=Sxj3FYaB3RNexTii",
         type: "video",
         icon: Icons.video_library,
+      ),
+       Resource(
+        title: "Enzymes Cheat Sheet",
+        pdfUrl: "assets/pdfs/enzymes cheat sheet.pdf",
+        type: "notes",
+        icon: Icons.picture_as_pdf,
+      ),
+      // Additional resources...
+    ],
+    "Chemistry": [
+      Resource(
+        title: "Thermochemistry",
+        pdfUrl: "https://youtu.be/9Eb1LX87TY0?si=Sxj3FYaB3RNexTii",
+        type: "video",
+        icon: Icons.video_library,
+      ),
+       Resource(
+        title: "Energy Changes in Chemical Reactions",
+        pdfUrl: "assets/pdfs/Energy Changes in Chemical Reactions.pdf",
+        type: "notes",
+        icon: Icons.picture_as_pdf,
       ),
       // Additional resources...
     ],
