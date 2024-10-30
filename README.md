@@ -9,13 +9,13 @@
                   <br>
                   3.Goh Jing Yang
 
----
+
 
 ## Project Description
 
 Our project aims to bridge the educational gap in Malaysia by providing accessible educational resources and personalised tutoring for students in underserved, rural areas. The application focuses on students facing limitations in digital resources and internet access, especially those in Sabah and Sarawak. By delivering quality content, mentorship, and tutoring, we address the pressing need for educational equity in remote regions.
 
----
+
 
 ## Key Features
 
@@ -30,11 +30,8 @@ Our project aims to bridge the educational gap in Malaysia by providing accessib
 
 4. **Comprehensive Onboarding**
    - A user-friendly onboarding process that introduces new users to the application’s functionalities and guides initial profile setup.
----
 
-Here’s a comprehensive explanation of the setup, dependencies, and usage based on the code files you've provided:
 
----
 
 ### Setup
 
@@ -63,7 +60,7 @@ flutter build apk --release
 ```
 This command creates a production-ready APK file in the `build/app/outputs/flutter-apk/` directory.
 
----
+
 
 ### Dependencies
 
@@ -74,7 +71,7 @@ The project uses several critical dependencies managed via Flutter’s package m
 - **http**: Used for making HTTP requests to APIs, this package is essential if the app needs to communicate with a backend server to fetch or send data.
 - **shared_preferences**: This package allows the app to store small amounts of data locally on the device, such as user session data or user settings, enabling persistent experiences between app restarts.
 
----
+
 
 ### Usage
 
@@ -90,7 +87,7 @@ The application provides several key functionalities aimed at improving access t
 
 5. **Resource Upload**: For administrators or tutors, the `add_resource_screen.dart` file provides an interface to upload new educational materials. This feature supports continuous content growth, ensuring students always have access to fresh, relevant resources.
 
----
+
 
 ## Project Files
 
@@ -122,7 +119,7 @@ The application provides several key functionalities aimed at improving access t
 - **`video_preview_screen.dart`**: Video resource preview functionality.
 - **`main.dart`**: Main entry point for the application.
 
----
+
 
 # Educonnect
 
