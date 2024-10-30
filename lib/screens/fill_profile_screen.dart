@@ -47,7 +47,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
       print('Gender: $_selectedGender');
 
       // Navigate to the home screen after profile completion
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
     }
   }
 

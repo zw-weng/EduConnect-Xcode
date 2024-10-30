@@ -51,6 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   formKey: _formKey,
                   emailController: _emailController,
                   passwordController: _passwordController,
+                  confirmPasswordController: TextEditingController(),
                   isPasswordVisible: _isPasswordVisible,
                   onPasswordToggle: () {
                     setState(() {

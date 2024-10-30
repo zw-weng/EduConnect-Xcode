@@ -1,9 +1,11 @@
+import 'package:educonnect/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class RegisterForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final TextEditingController confirmPasswordController;
   final bool isPasswordVisible;
   final VoidCallback onPasswordToggle;
   final VoidCallback onRegister;
@@ -13,6 +15,7 @@ class RegisterForm extends StatelessWidget {
     required this.formKey,
     required this.emailController,
     required this.passwordController,
+    required this.confirmPasswordController,
     required this.isPasswordVisible,
     required this.onPasswordToggle,
     required this.onRegister,
@@ -76,6 +79,38 @@ class RegisterForm extends StatelessWidget {
               return null;
             },
           ),
+          const SizedBox(height: 20),
+
+          // Confirm Password Field
+          TextFormField(
+            controller: confirmPasswordController,
+            obscureText: !isPasswordVisible,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              hintText: 'Confirm Password',
+              prefixIcon: const Icon(Icons.lock, color: Color(0xFF6A6A6A)),
+              suffixIcon: IconButton(
+                icon: Icon(
+                  isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                  color: const Color(0xFF6A6A6A),
+                ),
+                onPressed: onPasswordToggle,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12.0),
+                borderSide: BorderSide.none,
+              ),
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please confirm your password';
+              } else if (value != passwordController.text) {
+                return 'Passwords do not match';
+              }
+              return null;
+            },
+          ),
           const SizedBox(height: 30),
 
           // Sign Up Button
@@ -84,7 +119,7 @@ class RegisterForm extends StatelessWidget {
             child: ElevatedButton(
               onPressed: onRegister,
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF1E4FF1), // Blue button color
+                backgroundColor: kPrimaryColor, // Blue button color
                 padding: const EdgeInsets.symmetric(vertical: 14.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
