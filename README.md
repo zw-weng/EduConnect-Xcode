@@ -91,34 +91,66 @@ The application provides several key functionalities aimed at improving access t
 
 ## Project Files
 
-### Core Models
+Here’s an expanded explanation of each code component to provide a clear understanding of how your app functions:
 
-- **`colors.dart`**: Defines the app's colour scheme for consistent UI styling.
-- **`course.dart`**: Manages course details and educational content.
-- **`initial_user.dart`**: Handles initial user setup and configurations.
-- **`login_model.dart`** & **`register_model.dart`**: Implements user authentication with login and registration functionalities.
-- **`resource.dart`**: Manages educational content resources.
-- **`session.dart`**: Handles session scheduling and management.
-- **`tutor.dart`**: Manages tutor profiles and availability.
+### 1. **Models (Data Handling)**
+   These files manage the app's core data, acting like a database that stores information used throughout the app:
 
-### Screens
+   - **`course.dart`**: Defines what information is stored for each course, like the name, description, topics covered, and any other important details. This makes it easy to display course information in other parts of the app.
+   - **`initial_user.dart`**: Sets up default values for a user when they start using the app for the first time. For example, it might initialise a default profile picture, default preferences, or empty fields that the user will fill in later.
+   - **`login_model.dart` & `register_model.dart`**: Handle the processes for user authentication. They manage data when a user logs in or registers and ensure that sensitive information, like passwords, is handled securely.
+   - **`resource.dart`**: Stores data about educational resources, such as documents, videos, and PDFs. This data includes things like resource titles, types, and locations, which the app displays in the resource browsing screens.
+   - **`session.dart`**: Manages tutoring sessions by storing details like session time, date, tutor, and student information. This data helps in booking and viewing scheduled sessions.
+   - **`tutor.dart`**: Contains information about tutors, including their names, subjects they teach, experience, and available times. This data is crucial for booking and viewing tutor profiles.
 
-- **`onboarding_screen.dart`**: Manages the user onboarding experience.
-- **`add_resource_screen.dart`**: Allows uploading new educational resources.
-- **`base_screen.dart`**: The foundational layout and navigation management.
-- **`book_tutor_screen.dart`** & **`booking_screen.dart`**: Facilitate tutor bookings and session management.
-- **`edit_profile_screen.dart`** & **`fill_profile_screen.dart`**: Enable users to create and edit profiles.
-- **`home_screen.dart`**: Main dashboard showcasing resources, sessions, and recommendations.
-- **`login_screen.dart`** & **`register_screen.dart`**: Authentication screens for user login and registration.
-- **`materials_screen.dart`**: Displays available study materials.
-- **`pdf_preview_screen.dart`**: Allows users to preview PDF resources.
-- **`profile_screen.dart`**: User profile overview.
-- **`resources_screen.dart`**: List of available educational resources.
-- **`tuition_screen.dart`**: Interface for tuition session details.
-- **`tutor_detail_screen.dart`**: Tutor profile and session details.
-- **`video_preview_screen.dart`**: Video resource preview functionality.
-- **`main.dart`**: Main entry point for the application.
+### 2. **Screens (User Interface)**
+   These files make up the app’s visual interface and user flow. Each screen represents a different section of the app that users interact with:
 
+   - **`onboarding_screen.dart`**: The first screen new users see. It introduces the app’s main features and helps users understand how to navigate the app.
+   - **`add_resource_screen.dart`**: Allows administrators or tutors to upload new study materials or resources. Users with permission can add PDFs, videos, and other materials that will be available to students.
+   - **`base_screen.dart`**: Acts as a foundational layout for navigating between different parts of the app, such as the home screen, profile, and resource library.
+   - **`book_tutor_screen.dart` & `booking_screen.dart`**: Enable users to book and view tutoring sessions. Users can choose a tutor, pick an available time, and confirm their bookings.
+   - **`edit_profile_screen.dart` & `fill_profile_screen.dart`**: Allow users to input and update their personal information, such as their name, age, learning preferences, and other profile details.
+   - **`home_screen.dart`**: The main dashboard where users can quickly access resources, see upcoming sessions, and get personalised recommendations.
+   - **`login_screen.dart` & `register_screen.dart`**: These screens handle user authentication. The login screen allows returning users to sign in, while the register screen enables new users to create an account.
+   - **`materials_screen.dart`, `pdf_preview_screen.dart`, `video_preview_screen.dart`**: These screens let users view educational materials. For example, `pdf_preview_screen.dart` displays PDFs, while `video_preview_screen.dart` handles video content.
+   - **`profile_screen.dart`**: Displays the user’s profile, showing their name, bio, and any other relevant information they have provided.
+   - **`resources_screen.dart`**: Lists all available learning materials. Users can browse, search, and select resources they want to study.
+   - **`tuition_screen.dart`**: Shows details of tutoring sessions that are available for booking, including session times and subjects.
+   - **`tutor_detail_screen.dart`**: Provides a detailed profile of a tutor, including their qualifications, experience, and ratings.
+
+### 3. **UI Components (Reusable Elements)**
+   These are smaller, reusable parts of the interface, such as buttons and forms, which are used across multiple screens:
+
+   - **Buttons**:
+     - **`next_button.dart`, `get_started_button.dart`, `floating_add_button.dart`, `floating_download_button.dart`, `floating_video_button.dart`**: These files define buttons used for navigation (e.g., next steps), actions (e.g., adding resources), and downloading or viewing content.
+   
+   - **Profile Components**:
+     - **`profile_card.dart`, `profile_form.dart`, `profile_text_field.dart`**: These components build and display sections of the user profile. `profile_card.dart` might be used to show a quick summary, while `profile_form.dart` and `profile_text_field.dart` help users edit their information.
+   
+   - **Cards and Indicators**:
+     - **`course_card.dart`, `resource_card.dart`, `session_card.dart`**: These files create a visual card layout to display items like courses, resources, or sessions in an easy-to-read format. `dots_indicator.dart` shows progress indicators, such as steps completed in an onboarding sequence.
+   
+   - **Forms and Fields**:
+     - **`login_form.dart`, `register_form.dart`, `search_field.dart`**: These forms and input fields handle user data entry for login, registration, and search functionalities. They help standardise how data is collected and processed across the app.
+
+### 4. **Design and Styling**
+   - **`colors.dart`**: Centralises the app’s colour scheme, ensuring all screens and elements follow the same design theme. This makes it easier to maintain a cohesive look across the app, as any colour change in this file will automatically apply to all screens.
+
+### 5. **Main Application Entry**
+   - **`main.dart`**: The main file that runs when the app starts. It sets up initial configurations, loads necessary resources, and decides which screen to show first. This file handles the overall flow and navigation, connecting all parts of the app.
+
+
+### Summary
+
+The app is built with the following structure:
+- **Data Models**: Handle all the app’s main information, such as courses, users, and sessions.
+- **Screens**: Define the various sections of the app that users interact with, like booking sessions or viewing materials.
+- **UI Components**: Reusable elements like buttons and forms that maintain a consistent look and functionality across the app.
+- **Design**: Ensures consistent colours and styles across the app for a cohesive user experience.
+- **Main Application File (`main.dart`)**: Starts the app, sets up initial navigation, and connects all components.
+
+This structure makes the app organised and modular, allowing users to log in, access educational resources, book tutors, and personalise their experience. By separating functionalities into specific files and components, it’s easy to add new features or make updates.
 
 
 # Educonnect
