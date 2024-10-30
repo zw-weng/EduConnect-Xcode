@@ -64,12 +64,30 @@ This command creates a production-ready APK file in the `build/app/outputs/flutt
 
 ### Dependencies
 
-The project uses several critical dependencies managed via Flutter’s package manager. Here’s an overview of each:
+### Core Flutter Libraries
+- **`flutter`**: This is the core SDK that provides widgets and tools to create Flutter applications for multiple platforms, including Android, iOS, and the web.
+- **`cupertino_icons`**: Provides Cupertino-styled icons to support iOS design language in the Flutter app. Ideal for cross-platform consistency, particularly for iOS devices.
 
-- **flutter**: The core dependency for the app, providing the foundational UI elements and tools needed for cross-platform development.
-- **provider**: A state management library that simplifies sharing data across multiple widgets. It’s especially useful for managing global states like user sessions, making it easier to maintain app-wide consistency without complex code.
-- **http**: Used for making HTTP requests to APIs, this package is essential if the app needs to communicate with a backend server to fetch or send data.
-- **shared_preferences**: This package allows the app to store small amounts of data locally on the device, such as user session data or user settings, enabling persistent experiences between app restarts.
+### Navigation & Interface
+- **`google_nav_bar`**: Offers a Google-style navigation bar, typically used for the bottom navigation in the app. It's highly customisable, making it a popular choice for creating smooth, modern navigation experiences.
+- **`carousel_slider`**: A package that provides a slider widget, allowing you to create image or content sliders, often used for introductory screens, promotional displays, or featured content.
+
+### Media & PDF Handling
+- **`pdfx`**: A robust PDF viewer library that allows rendering and displaying PDF documents. It’s useful for any educational content or documents within the app.
+- **`youtube_player_flutter`**: Integrates a YouTube video player directly into the Flutter app, allowing seamless video playback within your app.
+- **`youtube_explode_dart`**: A powerful library to access YouTube metadata, such as video details, playlists, and streaming URLs, giving more control over YouTube content beyond simple embedding.
+
+### File and Path Management
+- **`flutter_file_dialog`**: Facilitates file selection and management, especially for picking files, saving files, or accessing specific directories.
+- **`external_path`**: Helps obtain paths for external storage directories, especially valuable when managing files or storing media on Android devices.
+- **`path`**: Essential for handling and manipulating file paths within the app, regardless of the operating system. It’s commonly used for consistent path formatting.
+
+### Development Dependencies
+- **`flutter_test`**: This package includes tools and frameworks for testing Flutter apps. It's standard for setting up unit tests, widget tests, and integration tests.
+- **`flutter_lints`**: Provides recommended lint rules for Dart and Flutter code to encourage best practices, catch errors, and maintain code quality.
+
+### Asset Management and Fonts
+- **`assets` section**: Defines directories for images, icons, PDFs, and fonts (`Poppins`). The font customisation allows you to use specific weights and styles for text consistency across the app.
 
 
 
