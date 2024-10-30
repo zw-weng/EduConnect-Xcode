@@ -38,7 +38,7 @@ class BookingScreen extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: const Color(0xFFF5F9FF), // Background color
+        color: kBackColor, // Background color
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,7 +1,7 @@
 import 'package:educonnect/constants/colors.dart';
 import 'package:flutter/material.dart';
-import '../models/tutor.dart';
-import 'booking_screen.dart'; 
+import 'package:educonnect/models/tutor.dart';
+import 'package:educonnect/screens/booking_screen.dart';
 
 class TutorDetailScreen extends StatelessWidget {
   final Tutor tutor;
@@ -69,7 +69,7 @@ class TutorDetailScreen extends StatelessWidget {
                       '${tutor.rating}',
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.black54,
+                        color: kTextColor,
                       ),
                     ),
                   ],
@@ -123,7 +123,7 @@ class TutorDetailScreen extends StatelessWidget {
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 154, 41, 206),
+                backgroundColor: kPrimaryColor,
                 padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
               ),
               child: const Text(

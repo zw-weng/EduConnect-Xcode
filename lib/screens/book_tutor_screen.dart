@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:educonnect/models/tutor.dart';
-import 'package:educonnect/models/session.dart'; // Import the Session model
-import 'package:educonnect/widgets/tuition_card.dart'; // Update the import
+import 'package:educonnect/models/session.dart';
+import 'package:educonnect/widgets/tuition_card.dart';
 import 'package:educonnect/constants/colors.dart';
-import 'package:educonnect/screens/tutor_detail_screen.dart'; // Import the TutorDetailScreen
+import 'package:educonnect/screens/tutor_detail_screen.dart';
 
 class BookTutorScreen extends StatefulWidget {
   const BookTutorScreen({super.key});
@@ -44,10 +44,8 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
             startTime: '10:00 AM',
             endTime: '11:00 AM',
           ),
-          // Add more sessions as needed
         ],
       ),
-      // Add more AddMaths tutors as needed
     ],
     [
       Tutor(
@@ -65,10 +63,8 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
             startTime: '02:00 PM',
             endTime: '03:00 PM',
           ),
-          // Add more sessions as needed
         ],
       ),
-      // Add more Biology tutors as needed
     ],
     [
       Tutor(
@@ -86,34 +82,32 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
             startTime: '03:00 PM',
             endTime: '04:00 PM',
           ),
-          // Add more sessions as needed
         ],
       ),
-      // Add more Physics tutors as needed
     ],
+    // Add empty lists for other subjects to indicate no tutors available.
+    [], [], [], [], [], [], 
   ];
 
   @override
   Widget build(BuildContext context) {
+    final selectedTutors = tutorsBySubject[_selectedSubjectIndex];
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Book a Tutor",
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Colors.white,
-              ),
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
         ),
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.white), // Set back icon color to white
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               stops: [0.1, 0.5],
-              colors: [
-                kPrimaryLight,
-                kPrimaryColor,
-              ],
+              colors: [kPrimaryLight, kPrimaryColor],
             ),
           ),
         ),
@@ -136,7 +130,7 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
                     },
                     child: Chip(
                       label: Text(subjects[index]),
-                      backgroundColor: _selectedSubjectIndex == index ? kPrimaryColor : Colors.grey[300],
+                      backgroundColor: _selectedSubjectIndex == index ? Colors.blue : Colors.grey[300],
                       labelStyle: TextStyle(
                         color: _selectedSubjectIndex == index ? Colors.white : Colors.black,
                       ),
@@ -147,27 +141,43 @@ class _BookTutorScreenState extends State<BookTutorScreen> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: tutorsBySubject[_selectedSubjectIndex].length,
-              itemBuilder: (context, index) {
-                return TuitionCard(
-                  tutor: tutorsBySubject[_selectedSubjectIndex][index],
-                  onBook: () async {
-                    // Navigate to TutorDetailScreen
-                    final result = await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => TutorDetailScreen(tutor: tutorsBySubject[_selectedSubjectIndex][index]),
-                      ),
-                    );
+            child: SingleChildScrollView(
+              child: selectedTutors.isNotEmpty
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: selectedTutors.length,
+                      itemBuilder: (context, index) {
+                        return TuitionCard(
+                          tutor: selectedTutors[index],
+                          onBook: () async {
+                            final result = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TutorDetailScreen(
+                                  tutor: selectedTutors[index],
+                                ),
+                              ),
+                            );
 
-                    if (result != null && result is Session) {
-                      // Handle booking logic
-                      Navigator.pop(context, result);
-                    }
-                  },
-                );
-              },
+                            if (result != null && result is Session) {
+                              Navigator.pop(context, result);
+                            }
+                          },
+                        );
+                      },
+                    )
+                  : Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20.0),
+                        child: Text(
+                          'No tutors available for this course.',
+                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                color: Colors.grey[600],
+                              ),
+                        ),
+                      ),
+                    ),
             ),
           ),
         ],
