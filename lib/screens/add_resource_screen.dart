@@ -62,11 +62,45 @@ class _AddResourceScreenState extends State<AddResourceScreen> {
 
       widget.onResourceAdded(selectedCourse!, newResource);
       Navigator.pop(context);
+
+      // Show success dialog
+      _showSuccessDialog();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please complete all fields.')),
       );
     }
+  }
+
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              const Icon(Icons.check_circle,
+                  color: Colors.green), // Success icon
+              const SizedBox(width: 8), // Space between icon and text
+              const Text('Success'),
+            ],
+          ),
+          content: const Text('Resource uploaded successfully!'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              style: TextButton.styleFrom(
+                backgroundColor: kPrimaryColor, // Button color
+                foregroundColor: Colors.white, // Text color
+              ),
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
