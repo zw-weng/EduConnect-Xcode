@@ -125,9 +125,12 @@ The application provides several key functionalities aimed at improving access t
 ![thirdpage](App_screen_display/3.jpg)
 ![fourthpage](App_screen_display/5.jpg)
 ![fiftpage](App_screen_display/6.jpg)
-App_screen_display/1.jpg
-App_screen_display/1.jpg
-App_screen_display/1.jpg
+![Page 6](App_screen_display/6.jpg)
+![Page 7](App_screen_display/7.jpg)
+![Page 8](App_screen_display/8.jpg)
+![Page 9](App_screen_display/9.jpg)
+![Page 10](App_screen_display/10.jpg)
+
 
 
 
