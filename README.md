@@ -60,8 +60,6 @@ flutter build apk --release
 ```
 This command creates a production-ready APK file in the `build/app/outputs/flutter-apk/` directory.
 
-
-
 ### Dependencies
 The libraries included in your pubspec.yaml for EduConnect, along with their main functions:
 ### Core Flutter Libraries
@@ -89,9 +87,25 @@ The libraries included in your pubspec.yaml for EduConnect, along with their mai
 ### Asset Management and Fonts
 - **`assets` section**: Defines directories for images, icons, PDFs, and fonts (`Poppins`). The font customisation allows you to use specific weights and styles for text consistency across the app.
 
+### Dependencies used
+- cupertino_icons (v.1.0.2)
+- hexcolor (v.3.0.1)
+- firebase_core (v.2.25.3)
+- firebase_auth (v.4.16.0)
+- smooth_page_indicator (v.1.1.0)
+- cloud_firestore (v.4.15.3)
+- image_picker (v.1.0.7)
+- firebase_storage (v.11.6.4)
+- google_nav_bar (v.5.0.6)
+- page_transition (v.2.1.0)
+- uuid (v.4.3.3)
+- page_view_dot_indicator (v.2.3.0)
+- intl (v.0.19.0)
+- url_launcher (v.6.2.5)
+- flutter_launcher_icons (v.0.13.1)
 
 
-### Usage
+## Usage
 
 The application provides several key functionalities aimed at improving access to quality education in rural areas of Malaysia:
 
@@ -104,6 +118,16 @@ The application provides several key functionalities aimed at improving access t
 4. **Accessing Educational Resources**: The app includes a repository of educational materials, accessible through the `materials_screen.dart`, `pdf_preview_screen.dart`, and `video_preview_screen.dart` files. Students can view a variety of learning resources, including PDFs and videos, enabling them to access quality content suited to their needs.
 
 5. **Resource Upload**: For administrators or tutors, the `add_resource_screen.dart` file provides an interface to upload new educational materials. This feature supports continuous content growth, ensuring students always have access to fresh, relevant resources.
+
+### Screenshots
+![firstpage](App_screen_display/1.jpg)
+![secondpage](App_screen_display/2.jpg)
+![thirdpage](App_screen_display/3.jpg)
+![fourthpage](App_screen_display/5.jpg)
+![fiftpage](App_screen_display/6.jpg)
+App_screen_display/1.jpg
+App_screen_display/1.jpg
+App_screen_display/1.jpg
 
 
 
