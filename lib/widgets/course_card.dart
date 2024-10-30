@@ -5,12 +5,13 @@ import 'package:flutter/material.dart';
 
 class CourseCard extends StatelessWidget {
   final Course course;
-  final List<Resource> resources; // Add this line to include resources
+  final List<Resource> resources;
 
   const CourseCard({
     super.key,
     required this.course,
-    required this.resources, required Null Function() onTap, // Update constructor
+    required this.resources,
+    required Null Function() onTap,
   });
 
   @override
@@ -39,9 +40,15 @@ class CourseCard extends StatelessWidget {
             children: [
               Image.asset(course.iconPath, height: 60), // Display the icon
               const SizedBox(height: 10),
-              Text(
-                course.name,
-                style: Theme.of(context).textTheme.titleLarge,
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  course.name,
+                  style: Theme.of(context).textTheme.titleLarge,
+                  maxLines: 2, // Allow up to 2 lines
+                  overflow: TextOverflow.ellipsis, // Add ellipsis if text still overflows
+                  textAlign: TextAlign.center, // Center-align the text
+                ),
               ),
             ],
           ),

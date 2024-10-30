@@ -7,27 +7,27 @@ class SearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: InputDecoration(
-        prefixIcon: const Icon(
+      decoration: const InputDecoration(
+        prefixIcon: Icon(
           Icons.search,
           color: Colors.grey,
           size: 26,
         ),
-        suffixIcon: const Icon(
+        suffixIcon: Icon(
           Icons.mic,
           color: kPrimaryColor,
           size: 26,
         ),
-        // helperText: "Search your topic",
         floatingLabelBehavior: FloatingLabelBehavior.never,
         labelText: "Search your topic",
-        labelStyle: const TextStyle(color: Colors.grey),
+        labelStyle: TextStyle(color: Colors.grey),
         filled: true,
         fillColor: Colors.white,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(40),
-        ),
+        border: InputBorder.none, // No border
+        enabledBorder: InputBorder.none, // No border when enabled
+        focusedBorder: InputBorder.none, // No border when focused
         isDense: true,
+        contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16), // Adjust padding as needed
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:educonnect/models/resource.dart'; // Ensure this points to your Resource model
 import 'package:educonnect/constants/colors.dart'; // Import your color constants
 
+// Top Resources of the month
 class ResourceCard extends StatelessWidget {
   final Resource resource;
   final String installs;
@@ -24,7 +25,7 @@ class ResourceCard extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
-            Icon(resource.icon, size: 35, color: kPrimaryColor), // Resource icon with kTextColor
+            Icon(resource.icon, size: 35, color: kPrimaryColor), // Resource icon with kPrimaryColor
             const SizedBox(width: 16),
             Expanded(
               child: Column(
@@ -40,22 +41,28 @@ class ResourceCard extends StatelessWidget {
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      Text(
-                        resource.type == "past_year" ? "Past Year Paper" :
-                        resource.type == "notes" ? "Notes" : "Video",
-                        style: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 14,
+                      Expanded(
+                        child: Text(
+                          resource.type == "past_year" ? "Past Year Paper" :
+                          resource.type == "notes" ? "Notes" : "Video",
+                          style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14,
+                          ),
+                          overflow: TextOverflow.ellipsis, // Prevent overflow
                         ),
                       ),
-                      const SizedBox(width: 8), // Add spacing between text and icon
-                      const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey), // Grey install icon
-                      const SizedBox(width: 4), // Add spacing
-                      Text(
-                        "$installs installs",
-                        style: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 14,
+                      const SizedBox(width: 8),
+                      const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey), // Grey icon
+                      const SizedBox(width: 4),
+                      Flexible(
+                        child: Text(
+                          "$installs installs",
+                          style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14,
+                          ),
+                          overflow: TextOverflow.ellipsis, // Prevent overflow
                         ),
                       ),
                     ],
