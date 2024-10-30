@@ -16,31 +16,31 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentPage = 0;
   final PageController _pageController = PageController(initialPage: 0);
 
-  // Data for onboarding screens
   final List<Map<String, String>> _onboardingData = [
     {
       "image": "assets/images/Main img.png",
       "title": "Online Tutoring",
-      "description": "We provide online tuition and allow you to book sessions with expert tutors."
+      "description":
+          "We provide online tuition and allow you to book sessions with expert tutors."
     },
     {
       "image": "assets/images/Main img 1.png",
-      "title": "Learn from Anytime",
-      "description": "Download resources and access them offline, ensuring you can learn anytime, anywhere."
+      "title": "Learn Anytime",
+      "description":
+          "Download resources and access them offline, ensuring you can learn anytime, anywhere."
     },
     {
       "image": "assets/images/Main img 2.png",
       "title": "Share Resources",
-      "description": "Upload and share your own resources with others, fostering a collaborative learning environment."
+      "description":
+          "Upload and share your own resources with others, fostering a collaborative learning environment."
     }
   ];
 
-  // Skip action - Navigate to Login page
   void _skipToLogin() {
     Navigator.pushReplacementNamed(context, '/login');
   }
 
-  // Go to the next page or skip to login if on the last page
   void _goToNextPage() {
     if (_currentPage < _onboardingData.length - 1) {
       _pageController.nextPage(
@@ -55,11 +55,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F7FA), // Light background color
+      backgroundColor: const Color(0xFFF5F7FA),
       body: SafeArea(
         child: Column(
           children: [
-            // Skip Button at the top-right
             Align(
               alignment: Alignment.topRight,
               child: Padding(
@@ -77,8 +76,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
             ),
-
-            // PageView for the onboarding screens
             Expanded(
               child: PageView.builder(
                 controller: _pageController,
@@ -97,23 +94,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 },
               ),
             ),
-
-            // Dots Indicator and Next/Get Started Button
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Dots Indicator
                   Padding(
-                    padding: const EdgeInsets.only(left: 16.0), // Adjust padding to move dots away from the left
+                    padding: const EdgeInsets.only(left: 16.0),
                     child: DotsIndicator(
                       currentPage: _currentPage,
                       itemCount: _onboardingData.length,
                     ),
                   ),
-
-                  // Next or Get Started Button
                   Padding(
                     padding: const EdgeInsets.only(right: 16.0),
                     child: _currentPage == _onboardingData.length - 1
