@@ -3,11 +3,11 @@
 **Project Title:** Educonnect 
 **Hackathon:** UMP Malaysia Hackathon 2024  
 **Team Members:** <br>
-                  1.Neo Zheng Weng 
+                  1. Neo Zheng Weng 
                   <br>
-                  2.Nicholas Wong Khai Shian 
+                  2. Nicholas Wong Khai Shian 
                   <br>
-                  3.Goh Jing Yang
+                  3. Goh Jing Yang
 
 
 
