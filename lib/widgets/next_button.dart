@@ -12,7 +12,7 @@ class NextButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
-        padding: const EdgeInsets.all(18.0),
+        padding: const EdgeInsets.all(16.0),
         backgroundColor: kPrimaryColor,
       ),
       child: const Icon(Icons.arrow_forward, color: Colors.white),

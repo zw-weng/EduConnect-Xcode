@@ -1,3 +1,4 @@
+import 'package:educonnect/constants/colors.dart';
 import 'package:flutter/material.dart';
 import '../models/tutor.dart';
 
@@ -52,7 +53,7 @@ class TuitionCard extends StatelessWidget {
                       tutor.course,
                       style: const TextStyle(
                         fontSize: 14,
-                        color: Colors.black54,
+                        color: kTextColor,
                       ),
                     ),
                     const SizedBox(height: 5),
@@ -65,7 +66,7 @@ class TuitionCard extends StatelessWidget {
                           tutor.rating.toString(),
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black54,
+                            color: kTextColor,
                           ),
                         ),
                       ],
