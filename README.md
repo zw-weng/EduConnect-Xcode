@@ -60,20 +60,52 @@ flutter build apk --release
 ```
 This command creates a production-ready APK file in the `build/app/outputs/flutter-apk/` directory.
 
-
-
 ### Dependencies
+The libraries included in your pubspec.yaml for EduConnect, along with their main functions:
+### Core Flutter Libraries
+- **`flutter`**: This is the core SDK that provides widgets and tools to create Flutter applications for multiple platforms, including Android, iOS, and the web.
+- **`cupertino_icons`**: Provides Cupertino-styled icons to support iOS design language in the Flutter app. Ideal for cross-platform consistency, particularly for iOS devices.
 
-The project uses several critical dependencies managed via Flutter’s package manager. Here’s an overview of each:
+### Navigation & Interface
+- **`google_nav_bar`**: Offers a Google-style navigation bar, typically used for the bottom navigation in the app. It's highly customisable, making it a popular choice for creating smooth, modern navigation experiences.
+- **`carousel_slider`**: A package that provides a slider widget, allowing you to create image or content sliders, often used for introductory screens, promotional displays, or featured content.
 
-- **flutter**: The core dependency for the app, providing the foundational UI elements and tools needed for cross-platform development.
-- **provider**: A state management library that simplifies sharing data across multiple widgets. It’s especially useful for managing global states like user sessions, making it easier to maintain app-wide consistency without complex code.
-- **http**: Used for making HTTP requests to APIs, this package is essential if the app needs to communicate with a backend server to fetch or send data.
-- **shared_preferences**: This package allows the app to store small amounts of data locally on the device, such as user session data or user settings, enabling persistent experiences between app restarts.
+### Media & PDF Handling
+- **`pdfx`**: A robust PDF viewer library that allows rendering and displaying PDF documents. It’s useful for any educational content or documents within the app.
+- **`youtube_player_flutter`**: Integrates a YouTube video player directly into the Flutter app, allowing seamless video playback within your app.
+- **`youtube_explode_dart`**: A powerful library to access YouTube metadata, such as video details, playlists, and streaming URLs, giving more control over YouTube content beyond simple embedding.
+
+### File and Path Management
+- **`flutter_file_dialog`**: Facilitates file selection and management, especially for picking files, saving files, or accessing specific directories.
+- **`external_path`**: Helps obtain paths for external storage directories, especially valuable when managing files or storing media on Android devices.
+- **`path`**: Essential for handling and manipulating file paths within the app, regardless of the operating system. It’s commonly used for consistent path formatting.
+
+### Development Dependencies
+- **`flutter_test`**: This package includes tools and frameworks for testing Flutter apps. It's standard for setting up unit tests, widget tests, and integration tests.
+- **`flutter_lints`**: Provides recommended lint rules for Dart and Flutter code to encourage best practices, catch errors, and maintain code quality.
+
+### Asset Management and Fonts
+- **`assets` section**: Defines directories for images, icons, PDFs, and fonts (`Poppins`). The font customisation allows you to use specific weights and styles for text consistency across the app.
+
+### Dependencies used
+- cupertino_icons (v.1.0.2)
+- hexcolor (v.3.0.1)
+- firebase_core (v.2.25.3)
+- firebase_auth (v.4.16.0)
+- smooth_page_indicator (v.1.1.0)
+- cloud_firestore (v.4.15.3)
+- image_picker (v.1.0.7)
+- firebase_storage (v.11.6.4)
+- google_nav_bar (v.5.0.6)
+- page_transition (v.2.1.0)
+- uuid (v.4.3.3)
+- page_view_dot_indicator (v.2.3.0)
+- intl (v.0.19.0)
+- url_launcher (v.6.2.5)
+- flutter_launcher_icons (v.0.13.1)
 
 
-
-### Usage
+## Usage
 
 The application provides several key functionalities aimed at improving access to quality education in rural areas of Malaysia:
 
@@ -86,6 +118,19 @@ The application provides several key functionalities aimed at improving access t
 4. **Accessing Educational Resources**: The app includes a repository of educational materials, accessible through the `materials_screen.dart`, `pdf_preview_screen.dart`, and `video_preview_screen.dart` files. Students can view a variety of learning resources, including PDFs and videos, enabling them to access quality content suited to their needs.
 
 5. **Resource Upload**: For administrators or tutors, the `add_resource_screen.dart` file provides an interface to upload new educational materials. This feature supports continuous content growth, ensuring students always have access to fresh, relevant resources.
+
+### Screenshots
+![firstpage](App_screen_display/1.jpg)
+![secondpage](App_screen_display/2.jpg)
+![thirdpage](App_screen_display/3.jpg)
+![fourthpage](App_screen_display/5.jpg)
+![fiftpage](App_screen_display/6.jpg)
+![Page 6](App_screen_display/6.jpg)
+![Page 7](App_screen_display/7.jpg)
+![Page 8](App_screen_display/8.jpg)
+![Page 9](App_screen_display/9.jpg)
+![Page 10](App_screen_display/10.jpg)
+
 
 
 
