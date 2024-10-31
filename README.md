@@ -2,7 +2,7 @@
 
 ## Bridging the Educational Gap in Malaysia
 
-EduConnect aims to close the educational divide in Malaysia by offering accessible resources and personalized tutoring to students in underserved rural areas, with a focus on those in Sabah and Sarawak. Designed to support students who face limitations in digital resources and internet connectivity, EduConnect provides quality content, mentorship, and tutoring services to promote educational equity in remote regions. Our vision for EduConnect includes developing an integrated chat feature to facilitate real-time communication between students and mentors/tutors. This enhancement will foster stronger connections and provide immediate support, creating an interactive and supportive learning community.
+EduConnect aims to close the educational divide in Malaysia by offering accessible resources and personalized tutoring to students in underserved rural areas, with a focus on those in Sabah and Sarawak. Designed to support students who face limitations in digital resources and internet connectivity, EduConnect provides quality content, mentorship, and tutoring services to promote educational equity in remote regions. Future improvement for EduConnect includes developing an integrated forum feature to facilitate real-time communication between students and mentors/tutors. This enhancement will foster stronger connections and provide immediate support, creating an interactive and supportive learning community.
 
 ## Key Features
 
