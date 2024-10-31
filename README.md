@@ -40,7 +40,26 @@ flutter build apk --release
 This command creates a production-ready APK file in the `build/app/outputs/flutter-apk/` directory.
 
 ## Screenshots
-
+<div>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/12.jpeg" alt="Alt text" width="300"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/11.jpeg" alt="Alt text" width="300"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/10.jpeg" alt="Alt text" width="300"/>
+</div>
+<div>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/4.jpeg" alt="Alt text" width="300"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/6.jpeg" alt="Alt text" width="300"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/2.jpeg" alt="Alt text" width="300"/>
+</div>
+<div>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/1.jpeg" alt="Alt text" width="300"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/8.jpeg" alt="Alt text" width="300"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/5.jpeg" alt="Alt text" width="300"/>
+</div>
+<div>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/3.jpeg" alt="Alt text" width="300"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/9.jpeg" alt="Alt text" width="300"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/7.jpeg" alt="Alt text" width="300"/>
+</div>
 
 ## Dependencies used
 - cupertino_icons: ^1.0.8
