@@ -39,6 +39,10 @@ flutter build apk --release
 ```
 This command creates a production-ready APK file in the `build/app/outputs/flutter-apk/` directory.
 
+### Testing Credentials
+- Email: test@gmail.com
+- Password: 12345
+
 ## Screenshots
 <div style="display: flex; justify-content: space-around;">
    <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/12.jpeg" alt="Alt text" width="200"/>
