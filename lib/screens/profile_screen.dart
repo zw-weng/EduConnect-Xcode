@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:educonnect/widgets/profile_card.dart';
 import 'edit_profile_screen.dart';
 import 'package:educonnect/constants/colors.dart';
+import 'package:educonnect/widgets/statistic_card.dart'; // Import the StatisticCard
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -61,8 +62,16 @@ class ProfileScreen extends StatelessWidget {
                   },
                   onLogout: () => _logout(context),
                 ),
-                const SizedBox(
-                    height: 20), // Space between ProfileCard and image
+                const SizedBox(height: 20), // Space between ProfileCard and image
+                
+                // Add the StatisticCard here
+                const StatisticCard(
+                  resourcesShared: 10, // Replace with actual value
+                  installsAchieved: 250, // Replace with actual value
+                ),
+                
+                const SizedBox(height: 20), // Space between StatisticCard and image
+                
                 Image.asset(
                   'assets/images/Main img.png', // Replace with your image path
                   height: 200, // Adjust the height as needed
