@@ -29,7 +29,7 @@ Once you’re in the project directory, install the necessary dependencies speci
 ```bash
 flutter pub get
 ```
-After the dependencies are installed, you can launch the application on an emulator or a connected device with:
+After the dependencies are installed, you can launch the application on an Android emulator or a connected Android device with:
 ```bash
 flutter run
 ```
@@ -39,20 +39,22 @@ flutter build apk --release
 ```
 This command creates a production-ready APK file in the `build/app/outputs/flutter-apk/` directory.
 
-### Screenshots
-![firstpage](App_screen_display/1.jpg)
-![secondpage](App_screen_display/2.jpg)
-![thirdpage](App_screen_display/3.jpg)
-![fourthpage](App_screen_display/5.jpg)
-![fiftpage](App_screen_display/6.jpg)
-![Page 6](App_screen_display/6.jpg)
-![Page 7](App_screen_display/7.jpg)
-![Page 8](App_screen_display/8.jpg)
-![Page 9](App_screen_display/9.jpg)
-![Page 10](App_screen_display/10.jpg)
+## Screenshots
+
 
 ## Dependencies used
-- 
+- cupertino_icons: ^1.0.8
+- google_nav_bar: ^5.0.6
+- carousel_slider: ^5.0.0
+- pdfx: ^2.8.0
+- youtube_player_flutter: ^9.1.1
+- youtube_explode_dart: ^2.3.5
+- flutter_file_dialog: ^3.0.2
+- external_path: ^2.0.1
+- path: ^1.9.0
+- dio: ^5.7.0
+- firebase_core: ^3.6.0
+- table_calendar: ^3.1.2
 
 ## License
 - MIT License
