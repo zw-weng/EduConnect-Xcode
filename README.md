@@ -41,24 +41,24 @@ This command creates a production-ready APK file in the `build/app/outputs/flutt
 
 ## Screenshots
 <div style="display: flex; justify-content: space-around;">
-   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/12.jpeg" alt="Alt text" width="300"/>
-   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/11.jpeg" alt="Alt text" width="300"/>
-   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/10.jpeg" alt="Alt text" width="300"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/12.jpeg" alt="Alt text" width="200"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/11.jpeg" alt="Alt text" width="200"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/10.jpeg" alt="Alt text" width="200"/>
 </div>
 <div style="display: flex; justify-content: space-around;">
-   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/4.jpeg" alt="Alt text" width="300"/>
-   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/6.jpeg" alt="Alt text" width="300"/>
-   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/2.jpeg" alt="Alt text" width="300"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/4.jpeg" alt="Alt text" width="200"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/6.jpeg" alt="Alt text" width="200"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/2.jpeg" alt="Alt text" width="200"/>
 </div>
 <div style="display: flex; justify-content: space-around;">
-   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/1.jpeg" alt="Alt text" width="300"/>
-   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/8.jpeg" alt="Alt text" width="300"/>
-   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/5.jpeg" alt="Alt text" width="300"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/1.jpeg" alt="Alt text" width="200"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/8.jpeg" alt="Alt text" width="200"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/5.jpeg" alt="Alt text" width="200"/>
 </div>
 <div style="display: flex; justify-content: space-around;">
-   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/3.jpeg" alt="Alt text" width="300"/>
-   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/9.jpeg" alt="Alt text" width="300"/>
-   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/7.jpeg" alt="Alt text" width="300"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/3.jpeg" alt="Alt text" width="200"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/9.jpeg" alt="Alt text" width="200"/>
+   <img src="https://github.com/zw-weng/EduConnect-Xcode/blob/main/app_screen/7.jpeg" alt="Alt text" width="200"/>
 </div>
 
 ## Dependencies used
