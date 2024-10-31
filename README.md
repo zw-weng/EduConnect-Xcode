@@ -20,6 +20,10 @@ EduConnect aims to close the educational divide in Malaysia by offering accessib
 
 ## Project Setup
 
+### Testing Login Credentials
+- Email: test@gmail.com
+- Password: 12345
+
 To set up the project locally, start by cloning the repository using:
 ```bash
 git clone <repository-url>
@@ -38,10 +42,6 @@ If you're preparing the app for distribution, you can build a release APK using:
 flutter build apk --release
 ```
 This command creates a production-ready APK file in the `build/app/outputs/flutter-apk/` directory.
-
-### Testing Credentials
-- Email: test@gmail.com
-- Password: 12345
 
 ## Screenshots
 <div style="display: flex; justify-content: space-around;">
